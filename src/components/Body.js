@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
-// import { restaurantList } from "../constants";
-
-// "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+import { API_CALL } from "../constants";
 
 const filterRestaurants = (restaurantList, inputValue) => {
   if (inputValue === "") {
@@ -19,20 +17,29 @@ const Body = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [isSearchClicked, setIsSearchClikted] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     callForRestaurants();
   }, []);
 
   const callForRestaurants = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-    );
-    const restaurantData = await data.json();
-    console.log(restaurantData.data.cards[2].data.data.cards);
-    const restaurantList = restaurantData.data.cards[2].data.data.cards;
-    setRestaurants(restaurantList);
-    setFilteredRestaurants(restaurantList);
+    try {
+      const data = await fetch(API_CALL);
+      if (!data.ok) {
+        throw new Error(data.status + " Ooops... we could not fetch data");
+      }
+      const restaurantData = await data.json();
+      const restaurantList = restaurantData?.data?.cards[2]?.data?.data?.cards;
+      if (!restaurantList) {
+        throw new Error("Ooopss, No restaurants in our data");
+      }
+      setRestaurants(restaurantList);
+      setFilteredRestaurants(restaurantList);
+    } catch (error) {
+      console.log(error.message);
+      setError(error);
+    }
   };
 
   const inputHandler = (e) => {
@@ -46,37 +53,45 @@ const Body = () => {
     setFilteredRestaurants(fiteredRestaurants);
   };
 
+  console.log(filteredRestaurants);
+
   return (
     <>
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="search"
-          value={inputValue}
-          onChange={inputHandler}
-        />
-        <button onClick={searchHandler}>Search</button>
-      </div>
-      <div className="restaurant-list">
-        {!isSearchClicked && filteredRestaurants.length === 0 ? (
-          <div>Loading......</div>
-        ) : (
-          <>
-            {filteredRestaurants.length === 0 ? (
-              <div>No restaurants was found</div>
+      {error ? (
+        <h1>{error.message}</h1>
+      ) : (
+        <>
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="search"
+              value={inputValue}
+              onChange={inputHandler}
+            />
+            <button onClick={searchHandler}>Search</button>
+          </div>
+          <div className="restaurant-list">
+            {!isSearchClicked && filteredRestaurants.length === 0 ? (
+              <div>Loading......</div>
             ) : (
-              filteredRestaurants.map((restaurant) => {
-                return (
-                  <RestaurantCard
-                    {...restaurant.data}
-                    key={restaurant.data.id}
-                  />
-                );
-              })
+              <>
+                {filteredRestaurants.length === 0 ? (
+                  <div>No restaurants was found</div>
+                ) : (
+                  filteredRestaurants.map((restaurant) => {
+                    return (
+                      <RestaurantCard
+                        {...restaurant.data}
+                        key={restaurant.data.id}
+                      />
+                    );
+                  })
+                )}
+              </>
             )}
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </>
   );
 };
