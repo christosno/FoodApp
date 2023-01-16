@@ -53,8 +53,6 @@ const Body = () => {
     setFilteredRestaurants(fiteredRestaurants);
   };
 
-  console.log(filteredRestaurants);
-
   return (
     <>
       {error ? (
