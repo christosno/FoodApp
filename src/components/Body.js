@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { API_CALL } from "../constants";
+import { Link } from "react-router-dom";
+import ErrorComp from "./ErrorComp";
 
 const filterRestaurants = (restaurantList, inputValue) => {
   if (inputValue === "") {
@@ -56,7 +58,9 @@ const Body = () => {
   return (
     <>
       {error ? (
-        <h1>{error.message}</h1>
+        <h1>
+          <ErrorComp message={error.message} />
+        </h1>
       ) : (
         <>
           <div className="search-container">
@@ -78,10 +82,12 @@ const Body = () => {
                 ) : (
                   filteredRestaurants.map((restaurant) => {
                     return (
-                      <RestaurantCard
-                        {...restaurant.data}
+                      <Link
                         key={restaurant.data.id}
-                      />
+                        to={"restaurant/" + restaurant.data.id}
+                      >
+                        <RestaurantCard {...restaurant.data} />
+                      </Link>
                     );
                   })
                 )}
