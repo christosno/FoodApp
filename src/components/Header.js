@@ -30,7 +30,13 @@ const Header = () => {
             <li>Contact</li>
           </Link>
           <li>Cart</li>
-          <li onClick={loginHandler}>{isLogedIn ? "Logout" : "Login"}</li>
+          {isLogedIn ? (
+            <li>Logout</li>
+          ) : (
+            <Link to={"/login"}>
+              <li>Login</li>
+            </Link>
+          )}
         </ul>
       </div>
     </div>

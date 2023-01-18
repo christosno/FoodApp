@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,6 +8,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
+import LoginForm from "./components/LoginForm";
 
 const AppLayoit = () => {
   return (
@@ -17,6 +18,10 @@ const AppLayoit = () => {
       <Footer />
     </>
   );
+};
+
+const submitHandler = () => {
+  console.log("submited");
 };
 
 const router = createBrowserRouter([
@@ -40,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/login",
+        element: <LoginForm />,
       },
     ],
   },
