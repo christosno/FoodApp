@@ -11,17 +11,14 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import LoginForm from "./components/LoginForm";
 
 const AppLayoit = () => {
+  const [isLogedIn, setIsLogedin] = useState(false);
   return (
     <>
-      <Header />
-      <Outlet />
+      <Header isLogedIn={isLogedIn} />
+      <Outlet context={[isLogedIn, setIsLogedin]} />
       <Footer />
     </>
   );
-};
-
-const submitHandler = () => {
-  console.log("submited");
 };
 
 const router = createBrowserRouter([

@@ -1,7 +1,10 @@
 import React from "react";
 import { useFormik } from "formik";
+import { useOutletContext } from "react-router";
 
 const LoginForm = () => {
+  const [isLogedIn, setIsLogedIn] = useOutletContext();
+
   const validate = (values) => {
     const errors = {};
 
@@ -28,7 +31,7 @@ const LoginForm = () => {
       email: "",
     },
     onSubmit: () => {
-      console.log("subbmited");
+      setIsLogedIn(true);
     },
     validate,
   });

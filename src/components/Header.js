@@ -9,12 +9,7 @@ const Title = () => {
   );
 };
 
-const Header = () => {
-  const [isLogedIn, setIsLogedIn] = useState(false);
-
-  const loginHandler = () => {
-    setIsLogedIn(isLogedIn ? false : true);
-  };
+const Header = ({ isLogedIn }) => {
   return (
     <div className="header">
       <Title />
