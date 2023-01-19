@@ -3,6 +3,7 @@ import RestaurantCard from "./RestaurantCard";
 import { API_CALL } from "../constants";
 import { Link } from "react-router-dom";
 import ErrorComp from "./ErrorComp";
+import "./Body.css";
 
 const filterRestaurants = (restaurantList, inputValue) => {
   if (inputValue === "") {
@@ -58,9 +59,9 @@ const Body = () => {
   return (
     <>
       {error ? (
-        <h1>
+        <div className="error-container">
           <ErrorComp message={error.message} />
-        </h1>
+        </div>
       ) : (
         <>
           <div className="search-container">
@@ -69,16 +70,19 @@ const Body = () => {
               placeholder="search"
               value={inputValue}
               onChange={inputHandler}
+              className="search-input"
             />
-            <button onClick={searchHandler}>Search</button>
+            <button onClick={searchHandler} className="search-btn">
+              Search
+            </button>
           </div>
           <div className="restaurant-list">
             {!isSearchClicked && filteredRestaurants.length === 0 ? (
-              <div>Loading......</div>
+              <div className="loading">Loading......</div>
             ) : (
               <>
                 {filteredRestaurants.length === 0 ? (
-                  <div>No restaurants was found</div>
+                  <div className="no-results">No restaurants was found</div>
                 ) : (
                   filteredRestaurants.map((restaurant) => {
                     return (

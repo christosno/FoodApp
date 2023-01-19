@@ -14,7 +14,7 @@ const AppLayoit = () => {
   const [isLogedIn, setIsLogedin] = useState(false);
   return (
     <>
-      <Header isLogedIn={isLogedIn} />
+      <Header isLogedIn={isLogedIn} setIsLogedin={setIsLogedin} />
       <Outlet context={[isLogedIn, setIsLogedin]} />
       <Footer />
     </>

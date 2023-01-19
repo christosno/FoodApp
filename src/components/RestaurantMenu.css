@@ -1,0 +1,26 @@
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-header img {
+  width: 200px;
+  height: 200px;
+}
+
+.menu-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.menu-items div {
+  margin: 1rem;
+}

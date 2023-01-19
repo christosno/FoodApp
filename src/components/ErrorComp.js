@@ -1,7 +1,7 @@
-import React from "react";
+import "./ErrorComp.css"; // import your css file
 
 const ErrorComp = ({ message }) => {
-  return <div>{message}</div>;
+  return <div className="error-container">{message}</div>;
 };
 
 export default ErrorComp;

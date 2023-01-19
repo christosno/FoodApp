@@ -1,0 +1,40 @@
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+#title {
+  margin: 0;
+}
+
+.nav-items {
+  display: flex;
+}
+
+.nav-items ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-items ul li {
+  padding: 0.5rem 1rem;
+}
+
+.nav-items ul li:hover {
+  background-color: #f8f9fa;
+  cursor: pointer;
+}

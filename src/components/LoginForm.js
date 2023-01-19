@@ -1,6 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import { useOutletContext, useNavigate } from "react-router-dom";
+import "./LoginForm.css";
 
 const LoginForm = () => {
   const [isLogedIn, setIsLogedIn] = useOutletContext();
@@ -39,8 +40,8 @@ const LoginForm = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div>
+    <form onSubmit={formik.handleSubmit} className="login-form">
+      <div className="form-group">
         <label htmlFor="firstName">First Name</label>
         <input
           onBlur={formik.handleBlur}
@@ -48,12 +49,13 @@ const LoginForm = () => {
           type="text"
           id="firstName"
           name="firstName"
+          className="form-control"
         />
         {formik.errors.firstName && formik.touched.firstName ? (
-          <div>{formik.errors.firstName}</div>
+          <div className="error-message">{formik.errors.firstName}</div>
         ) : null}
       </div>
-      <div>
+      <div className="form-group">
         <label htmlFor="lastName">Last Name</label>
         <input
           onBlur={formik.handleBlur}
@@ -61,12 +63,13 @@ const LoginForm = () => {
           type="text"
           id="lastName"
           name="lastName"
+          className="form-control"
         />
         {formik.errors.lastName && formik.touched.lastName ? (
-          <div>{formik.errors.lastName}</div>
+          <div className="error-message">{formik.errors.lastName}</div>
         ) : null}
       </div>
-      <div>
+      <div className="form-group">
         <label htmlFor="email">E-mail</label>
         <input
           onBlur={formik.handleBlur}
@@ -74,9 +77,10 @@ const LoginForm = () => {
           type="email"
           id="email"
           name="email"
+          className="form-control"
         />
         {formik.errors.email && formik.touched.email ? (
-          <div>{formik.errors.email}</div>
+          <div className="error-message">{formik.errors.email}</div>
         ) : null}
       </div>
       <button type="submit">Submit</button>
