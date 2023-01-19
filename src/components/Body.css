@@ -1,41 +1,73 @@
+body {
+  background-color: #f4f4f4; /* light gray */
+  color: #4a4a4a; /* dark gray */
+}
+
+/* use Wolt's typography */
+body {
+  font-family: "Open Sans", sans-serif; /* Wolt uses Open Sans as its primary font */
+}
+
+/* style the search container */
 .search-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1rem 0;
+  display: flex; /* display elements horizontally */
+  align-items: center; /* center elements vertically */
+  margin-bottom: 1em; /* add some space below the container */
+  background-color: white; /* white background color */
+  padding: 1em; /* add some padding */
+  border-radius: 0.5em; /* round the corners */
 }
 
+/* style the search input */
 .search-input {
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  border: 1px solid #ccc;
-  margin-right: 1rem;
-  flex: 1;
+  padding: 0.5em; /* add some padding to the input */
+  border-radius: 0.5em; /* round the corners of the input */
+  border: none; /* remove the default border */
+  font-size: 1em; /* set the font size */
+  flex: 1; /* take up all remaining space */
 }
 
+/* style the search button */
 .search-btn {
-  padding: 0.75rem 1.5rem;
-  background-color: green;
-  color: white;
-  border-radius: 0.25rem;
+  padding: 0.5em 1em; /* add some padding to the button */
+  background-color: #00cc99; /* Wolt's main color */
+  color: white; /* text color */
+  border-radius: 0.5em; /* round the corners of the button */
+  border: none; /* remove the default border */
+  font-size: 1em; /* set the font size */
+  cursor: pointer; /* change cursor on hover */
+  font-weight: bold; /* make the text bold */
 }
 
+/* style the restaurant list container */
 .restaurant-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 2rem;
+  display: flex; /* display elements horizontally */
+  flex-wrap: wrap; /* wrap elements to the next line if necessary */
+  align-items: center; /* center elements vertically */
+  justify-content: center; /* center elements horizontally */
 }
 
-.no-results {
-  text-align: center;
-}
-
+/* style the loading message */
 .loading {
-  text-align: center;
+  font-size: 1.5em; /* make the font size larger */
+  font-weight: bold; /* make the text bold */
+  text-align: center; /* center the text */
 }
 
+/* style the no results message */
+.no-results {
+  font-size: 1.5em; /* make the font size larger */
+  font-weight: bold; /* make the text bold */
+  text-align: center; /* center the text */
+}
+
+/* style the error container */
 .error-container {
-  text-align: center;
-  margin-top: 2rem;
+  background-color: #ffb6c1; /* light pink */
+  padding: 1em; /* add some padding to the container */
+  text-align: center; /* center the text */
+}
+
+.reataurant-cart-link {
+  text-decoration: none;
 }

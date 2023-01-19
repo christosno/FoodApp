@@ -17,8 +17,11 @@ const RestaurantCard = ({
         />
         <div className="card-info">
           <h2 className="card-title">{name}</h2>
-          <h2 className="card-cuisines">{cuisines.join(", ")}</h2>
-          <h4 className="card-distance">{lastMileTravel} km</h4>
+          <h4 className="card-cuisines">Cuisines:</h4>
+          <p2 className="card-cuisines">{cuisines.join(", ")}</p2>
+          <h5 className="card-distance">
+            {parseFloat(lastMileTravel).toFixed(2)} km
+          </h5>
         </div>
       </div>
     </div>

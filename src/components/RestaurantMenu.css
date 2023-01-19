@@ -1,26 +1,30 @@
 .menu-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: white; /* white background color */
+  padding: 1em; /* add some padding */
 }
 
+/* use Wolt's typography */
 .menu-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  font-family: "Open Sans", sans-serif; /* Wolt uses Open Sans as its primary font */
+  color: #4a4a4a; /* dark gray */
 }
 
-.menu-header img {
-  width: 200px;
-  height: 200px;
+/* style the menu header */
+.menu-header h1,
+h2,
+h3 {
+  margin: 0; /* remove the default margin */
 }
 
+/* style the menu items */
 .menu-items {
-  display: flex;
-  flex-wrap: wrap;
+  font-size: 1em; /* set the font size */
+  margin: 0; /* remove the default margin */
+  color: #4a4a4a; /* dark gray */
 }
 
-.menu-items div {
-  margin: 1rem;
+/* style the menu items */
+.menu-items p {
+  margin: 0; /* remove the default margin */
+  font-weight: bold; /* make the text bold */
 }

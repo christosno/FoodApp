@@ -15,30 +15,41 @@ const Header = ({ isLogedIn, setIsLogedin }) => {
       <div className="header">
         <Title />
         <div className="nav-items">
-          <ul>
-            <Link to={"/"}>
-              <li>Home</li>
-            </Link>
-            <Link to={"/about"}>
-              <li>About Us</li>
-            </Link>
-            <Link to={"/contact"}>
-              <li>Contact</li>
-            </Link>
-            <li>Cart</li>
+          <ul className="nav-links">
+            <li className="nav-item">
+              <Link className="nav-link" to={"/"}>
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to={"/about"}>
+                About Us
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to={"/contact"}>
+                Contact
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link">Cart</Link>
+            </li>
             {isLogedIn ? (
               <li
+                className="nav-item"
                 onClick={() => {
                   console.log("logout");
                   setIsLogedin(false);
                 }}
               >
-                Logout
+                <link>Logout</link>
               </li>
             ) : (
-              <Link to={"/login"}>
-                <li>Login</li>
-              </Link>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/login"}>
+                  Login
+                </Link>
+              </li>
             )}
           </ul>
         </div>
