@@ -1,9 +1,10 @@
 import React from "react";
 import { useFormik } from "formik";
-import { useOutletContext } from "react-router";
+import { useOutletContext, useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [isLogedIn, setIsLogedIn] = useOutletContext();
+  const navigate = useNavigate();
 
   const validate = (values) => {
     const errors = {};
@@ -32,6 +33,7 @@ const LoginForm = () => {
     },
     onSubmit: () => {
       setIsLogedIn(true);
+      navigate("/");
     },
     validate,
   });
