@@ -1,49 +1,93 @@
-/* use Wolt's color scheme */
 .header-container {
-  background-color: #00cc99; /* Wolt's main color */
-  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* use Wolt's typography */
-h1 {
-  font-family: "Open Sans", sans-serif; /* Wolt uses Open Sans as its primary font */
-  color: white; /* text color */
-  text-align: center; /* center the text */
-  padding: 1em; /* add some padding */
+.hamburger {
+  display: none;
 }
 
-/* style the navigation items */
+.hamburger-two {
+  visibility: hidden;
+}
+
+.header {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+#title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #4a4a4a;
+  display: inline-block;
+}
+
 .nav-items {
-  display: flex; /* display elements horizontally */
-  justify-content: center; /* center elements horizontally */
-  padding: 1em; /* add some padding */
+  display: flex;
+  align-items: center;
 }
 
 .nav-links {
+  display: flex;
   list-style: none;
-}
-
-/* style the navigation links */
-li {
-  list-style-type: none; /* remove the default bullet points */
-  margin: 0 1em; /* add some margin */
-  color: white; /* text color */
-  font-size: 1.2em; /* set the font size */
-  font-weight: bold; /* make the text bold */
-  cursor: pointer; /* change cursor on hover */
-}
-
-/* style the active navigation link */
-.active {
-  color: #4a4a4a; /* dark gray */
-}
-
-.nav-link {
-  text-decoration: none;
-  vertical-align: middle;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-item {
+  margin-left: 20px;
+}
+
+.nav-link {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  text-decoration: none;
+  color: #4a4a4a;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffbb00;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .nav-items {
+    width: 100%;
+    display: none;
+  }
+
+  .nav-item {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  #title {
+    width: 80%;
+    text-align: center;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+.navOpen {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }

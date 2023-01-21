@@ -1,5 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Title = () => {
   return (
@@ -10,12 +14,20 @@ const Title = () => {
 };
 
 const Header = ({ isLogedIn, setIsLogedin }) => {
+  const [navOpen, setNavOpen] = useState(false);
+
   return (
     <div className="header-container">
       <div className="header">
+        <div className="hamburger" onClick={() => setNavOpen(!navOpen)}>
+          <FontAwesomeIcon icon={faBars} />
+        </div>
         <Title />
-        <div className="nav-items">
-          <ul className="nav-links">
+        <div className="hamburger-two" onClick={() => setNavOpen(!navOpen)}>
+          <FontAwesomeIcon icon={faBars} />
+        </div>
+        <div className={`nav-items ${navOpen ? "navOpen" : ""}`}>
+          <ul className={`nav-links ${navOpen ? "navOpen" : ""}`}>
             <li className="nav-item">
               <Link className="nav-link" to={"/"}>
                 Home

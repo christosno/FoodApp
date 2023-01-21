@@ -38,7 +38,6 @@ const Body = () => {
         throw new Error("Ooopss, No restaurants in our data");
       }
       setRestaurants(restaurantList);
-      console.log(restaurantList);
       setFilteredRestaurants(restaurantList);
     } catch (error) {
       console.log(error.message);
