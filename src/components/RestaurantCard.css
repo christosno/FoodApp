@@ -1,50 +1,80 @@
-.card {
-  border: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
 .card-container {
-  background-color: white; /* white background color */
-  border-radius: 0.5em; /* round the corners */
-  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.1); /* add a subtle shadow */
-  margin: 1em; /* add some margin */
-  /* min-height: 350px; */
+  display: flex;
+  justify-content: center;
 }
 
-/* use Wolt's typography */
-.card-info {
-  color: #4a4a4a;
-  padding: 1em;
-  font-family: Open Sans, sans-serif;
+.card {
+  width: 300px;
+  height: 400px;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-/* style the card image */
+.card:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
 .card-img {
-  width: 100%; /* make the image take up the full width */
-  border-radius: 0.5em 0.5em 0 0; /* round the top corners */
-  margin-top: 0.5rem;
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
 }
 
-/* style the card title */
+.card-info {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  color: #4a4a4a;
+}
+
 .card-title {
-  font-size: 1.2em; /* set the font size */
-  font-weight: bold; /* make the text bold */
-  margin: 0.5rem; /* remove the default margin */
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #4a4a4a;
 }
 
-/* style the card cuisines */
-.card-cuisines {
-  font-size: 1em; /* set the font size */
-  margin: 0.5rem; /* remove the default margin */
+.rating {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
-/* style the card distance */
+.rating .fa-star {
+  color: #c4c4c4;
+  font-size: 20px;
+  margin-right: 5px;
+  transition: all 0.3s ease;
+}
+
+.rating .fa-star.active {
+  color: #ffbb00;
+}
+
 .card-distance {
-  font-size: 1em; /* set the font size */
-  margin: 0.5rem; /* remove the default margin */
-  color: #00cc99; /* Wolt's main color */
+  font-size: 18px;
+  margin-top: auto;
+  margin-bottom: 20px;
+  color: #9b9b9b;
+}
+
+.card-cost {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #9b9b9b;
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+    height: auto;
+  }
+}

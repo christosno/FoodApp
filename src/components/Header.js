@@ -42,7 +42,7 @@ const Header = ({ isLogedIn, setIsLogedin }) => {
                   setIsLogedin(false);
                 }}
               >
-                <link>Logout</link>
+                <Link>Logout</Link>
               </li>
             ) : (
               <li className="nav-item">
