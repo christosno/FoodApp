@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { API_MENU_CALL, IMG_CDN_URL } from "../constants";
 import { useParams } from "react-router-dom";
 import ErrorComp from "./ErrorComp";
+import MenuMainCategory from "./MenuMainCategory";
+import MenuItem from "./MenuItem";
 import "./RestaurantMenu.css";
 
 const RestaurantMenu = () => {
@@ -26,11 +28,15 @@ const RestaurantMenu = () => {
         throw new Error("Ooopss, No menu in our data");
       }
       setRestaurantMenu(finalMenuData);
+
       setIsLoaded(true);
     } catch (err) {
       setError(err.message);
     }
   };
+
+  // console.log(restaurantMenu);
+  console.log(restaurantMenu?.menu.widgets);
 
   return (
     <div className="menu-container">
@@ -54,12 +60,15 @@ const RestaurantMenu = () => {
           </div>
           <div className="menu-items">
             <h1>Menu</h1>
-            {Object.values(restaurantMenu?.menu?.items).map((menuItem) => {
+            {/* {Object.values(restaurantMenu?.menu?.items).map((menuItem) => {
               return (
                 <div key={menuItem.id}>
                   <p>{menuItem.name}</p>
                 </div>
               );
+            })} */}
+            {restaurantMenu.menu.widgets.map((item, index) => {
+              return <MenuMainCategory key={index} item={item} />;
             })}
           </div>
         </>
