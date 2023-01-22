@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import MenuCategory from "./MenuCategory";
 import MenuItem from "./MenuItem";
+import { filterMenuItems } from "../utils/filterMenuItems";
 
-const MenuMainCategory = ({ item }) => {
-  const [menuEntities, setMenuEntities] = useState(null);
+const MenuMainCategory = ({ item, totalItems }) => {
+  // const [menuEntities, setMenuEntities] = useState(null);
   const [menuWidgets, setMenuWidgents] = useState(null);
   const [menuItems, setMenuItems] = useState(null);
   const [isChildVisible, setIsChildVisible] = useState(false);
+
   const MenuCategoryClickHandler = (item) => {
     setIsChildVisible(!isChildVisible);
     if (item?.widgets) {
-      setMenuEntities(null);
+      setMenuItems(null);
       setMenuWidgents(item.widgets);
     }
 
@@ -20,7 +22,10 @@ const MenuMainCategory = ({ item }) => {
     // }
 
     if (item.entities) {
-      setMenuEntities(item.entities);
+      const menuEntities = item.entities; // fix the variable name
+      const finalItems = filterMenuItems(totalItems, menuEntities); // put the correct menuEntities
+      console.log("finalItems", finalItems);
+      setMenuItems(finalItems); /// remove it and use setMenuitems
     }
   };
   console.log("IN MAIN MENU CATEGORI", menuWidgets);
@@ -35,13 +40,15 @@ const MenuMainCategory = ({ item }) => {
                 // onClick={() => MenuCategoryClickHandler(innerItem, true)}
                 name={innerItem.name}
                 item={innerItem}
+                totalItems={totalItems}
               />
             );
           })
         : null}
-      {menuEntities && isChildVisible
-        ? menuEntities.map((innerItem, index) => {
-            return <MenuItem key={innerItem.id} id={innerItem.id} />;
+      {menuItems && isChildVisible /// remuve the menuEntities and add MenuItems
+        ? menuItems.map((innerItem, index) => {
+            console.log("INNER ITEM !!!", innerItem);
+            return <MenuItem key={innerItem.id} {...innerItem} />;
           })
         : null}
     </>

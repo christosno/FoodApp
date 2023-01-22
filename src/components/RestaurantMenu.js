@@ -28,7 +28,7 @@ const RestaurantMenu = () => {
         throw new Error("Ooopss, No menu in our data");
       }
       setRestaurantMenu(finalMenuData);
-
+      console.log("RESTAURANT MENU", finalMenuData);
       setIsLoaded(true);
     } catch (err) {
       setError(err.message);
@@ -68,7 +68,13 @@ const RestaurantMenu = () => {
               );
             })} */}
             {restaurantMenu.menu.widgets.map((item, index) => {
-              return <MenuMainCategory key={index} item={item} />;
+              return (
+                <MenuMainCategory
+                  key={index}
+                  item={item}
+                  totalItems={Object.values(restaurantMenu?.menu?.items)}
+                />
+              );
             })}
           </div>
         </>

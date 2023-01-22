@@ -1,7 +1,11 @@
 import React from "react";
 
-const MenuItem = ({ id }) => {
-  return <div>MenuItem {id}</div>;
+const MenuItem = ({ name, id }) => {
+  return (
+    <div>
+      {name} {id}
+    </div>
+  );
 };
 
 export default MenuItem;
