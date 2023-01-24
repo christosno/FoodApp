@@ -3,40 +3,28 @@ import { API_MENU_CALL, IMG_CDN_URL } from "../constants";
 import { useParams } from "react-router-dom";
 import ErrorComp from "./ErrorComp";
 import MenuMainCategory from "./MenuMainCategory";
-import MenuItem from "./MenuItem";
+import useFetch from "../utils/useFetch";
 import "./RestaurantMenu.css";
 
 const RestaurantMenu = () => {
   const { id } = useParams();
   const [restaurantMenu, setRestaurantMenu] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(null);
+
+  const applyData = (menuData) => {
+    const finalMenuData = menuData?.data;
+    console.log(finalMenuData);
+    setRestaurantMenu(finalMenuData);
+  };
+
+  const {
+    isLoading,
+    error,
+    fetchFunction: fetchRestaurantMenuData,
+  } = useFetch({ url: API_MENU_CALL + id }, applyData);
 
   useEffect(() => {
     fetchRestaurantMenuData();
   }, []);
-
-  const fetchRestaurantMenuData = async () => {
-    try {
-      const data = await fetch(API_MENU_CALL + id);
-      if (!data.ok) {
-        throw new Error(data.status + " Ooops... we could not fetch data");
-      }
-      const menuData = await data.json();
-      const finalMenuData = menuData?.data;
-      if (!finalMenuData) {
-        throw new Error("Ooopss, No menu in our data");
-      }
-      setRestaurantMenu(finalMenuData);
-      console.log("RESTAURANT MENU", finalMenuData);
-      setIsLoaded(true);
-    } catch (err) {
-      setError(err.message);
-    }
-  };
-
-  // console.log(restaurantMenu);
-  console.log(restaurantMenu?.menu.widgets);
 
   return (
     <div className="menu-container">
@@ -45,7 +33,7 @@ const RestaurantMenu = () => {
           <ErrorComp message={error.message} />
           <h1>{error}</h1>
         </>
-      ) : !isLoaded ? (
+      ) : isLoading ? (
         <>Loading...</>
       ) : (
         <>
@@ -60,14 +48,7 @@ const RestaurantMenu = () => {
           </div>
           <div className="menu-items">
             <h1>Menu</h1>
-            {/* {Object.values(restaurantMenu?.menu?.items).map((menuItem) => {
-              return (
-                <div key={menuItem.id}>
-                  <p>{menuItem.name}</p>
-                </div>
-              );
-            })} */}
-            {restaurantMenu.menu.widgets.map((item, index) => {
+            {restaurantMenu?.menu?.widgets.map((item, index) => {
               return (
                 <MenuMainCategory
                   key={index}

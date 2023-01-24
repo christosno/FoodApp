@@ -4,6 +4,8 @@ import { API_CALL } from "../constants";
 import { Link } from "react-router-dom";
 import ErrorComp from "./ErrorComp";
 import "./Body.css";
+import useFetch from "../utils/useFetch";
+// import useFetch from "../utils/useFetch";
 
 const filterRestaurants = (restaurantList, inputValue) => {
   if (inputValue === "") {
@@ -20,30 +22,22 @@ const Body = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [isSearchClicked, setIsSearchClikted] = useState(false);
-  const [error, setError] = useState(null);
+
+  const applyData = (restaurantData) => {
+    const restaurantList = restaurantData?.data?.cards[2]?.data?.data?.cards;
+    setRestaurants(restaurantList);
+    setFilteredRestaurants(restaurantList);
+  };
+
+  const {
+    isLoading,
+    error,
+    fetchFunction: callForRestaurants,
+  } = useFetch({ url: API_CALL }, applyData);
 
   useEffect(() => {
     callForRestaurants();
   }, []);
-
-  const callForRestaurants = async () => {
-    try {
-      const data = await fetch(API_CALL);
-      if (!data.ok) {
-        throw new Error(data.status + " Ooops... we could not fetch data");
-      }
-      const restaurantData = await data.json();
-      const restaurantList = restaurantData?.data?.cards[2]?.data?.data?.cards;
-      if (!restaurantList) {
-        throw new Error("Ooopss, No restaurants in our data");
-      }
-      setRestaurants(restaurantList);
-      setFilteredRestaurants(restaurantList);
-    } catch (error) {
-      console.log(error.message);
-      setError(error);
-    }
-  };
 
   const inputHandler = (e) => {
     setInputValue(e.target.value);
