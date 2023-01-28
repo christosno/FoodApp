@@ -4,17 +4,8 @@ import { API_CALL } from "../constants";
 import { Link } from "react-router-dom";
 import ErrorComp from "./ErrorComp";
 import useFetch from "../utils/useFetch";
-// import useFetch from "../utils/useFetch";
-
-const filterRestaurants = (restaurantList, inputValue) => {
-  if (inputValue === "") {
-    return restaurantList;
-  }
-  return restaurantList.filter((restaurant) => {
-    const restaurantName = restaurant.data.name.toUpperCase().split(" ");
-    return restaurantName.includes(inputValue.toUpperCase());
-  });
-};
+import Search from "./Search";
+import { filterRestaurants } from "../utils/filterReataurnats";
 
 const Body = () => {
   const [inputValue, setInputValue] = useState("");
@@ -44,31 +35,25 @@ const Body = () => {
   };
 
   const searchHandler = () => {
+    console.log("SEARCH HNDLER");
     setIsSearchClikted(true);
     const fiteredRestaurants = filterRestaurants(restaurants, inputValue);
     setFilteredRestaurants(fiteredRestaurants);
   };
   console.log(restaurants);
   return (
-    <>
+    <div className=" bg-sky-200">
       {error ? (
         <div className="error-container">
           <ErrorComp message={error.message} />
         </div>
       ) : (
         <>
-          <div className="search-container p-5 bg-pink-200 m-2">
-            <input
-              type="text"
-              placeholder="search"
-              value={inputValue}
-              onChange={inputHandler}
-              className="search-input"
-            />
-            <button onClick={searchHandler} className="search-btn">
-              Search
-            </button>
-          </div>
+          <Search
+            inputHandler={inputHandler}
+            value={inputValue}
+            searchHandler={searchHandler}
+          />
           <div className="restaurant-list">
             {!isSearchClicked && filteredRestaurants.length === 0 ? (
               <div className="loading">Loading......</div>
@@ -94,7 +79,7 @@ const Body = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 

@@ -41,7 +41,7 @@ const Header = ({ isLogedIn, setIsLogedin }) => {
           </li>
           {isLogedIn ? (
             <Link to={"/"}>
-              <Button>Logout</Button>
+              <Button margin="ml-8 mr-2">Logout</Button>
             </Link>
           ) : (
             // <li
@@ -54,7 +54,13 @@ const Header = ({ isLogedIn, setIsLogedin }) => {
             //   <Link>Logout</Link>
             // </li>
             <Link to={"/login"}>
-              <Button>Login</Button>
+              <Button
+                bgColor="bg-sky-700"
+                bgHoverColor="bg-sky-600"
+                margin="ml-8"
+              >
+                Login
+              </Button>
             </Link>
             // <li className="md:ml-8 text-xl hover:text-gray-400 duration-500">
             //   <Link to={"/login"}>Login</Link>
