@@ -26,7 +26,7 @@ const RestaurantMenu = () => {
   }, []);
 
   return (
-    <div className="menu-container">
+    <div className=" bg-sky-200 mt-16">
       {error ? (
         <>
           <ErrorComp message={error.message} />
@@ -36,7 +36,7 @@ const RestaurantMenu = () => {
         <>Loading...</>
       ) : (
         <>
-          <div className="menu-header">
+          <div>
             <h1>Restraunt id: {id}</h1>
             <h2>{restaurantMenu?.name}</h2>
             <img src={IMG_CDN_URL + restaurantMenu?.cloudinaryImageId} />
@@ -45,7 +45,7 @@ const RestaurantMenu = () => {
             <h3>{restaurantMenu?.avgRating} stars</h3>
             <h3>{restaurantMenu?.costForTwoMsg}</h3>
           </div>
-          <div className="menu-items">
+          <div>
             <h1>Menu</h1>
             {restaurantMenu?.menu?.widgets.map((item, index) => {
               return (
