@@ -44,15 +44,6 @@ const Header = ({ isLogedIn, setIsLogedin }) => {
               <Button margin="ml-8 mr-2">Logout</Button>
             </Link>
           ) : (
-            // <li
-            //   className="md:ml-8 text-xl hover:text-gray-400 duration-500"
-            //   onClick={() => {
-            //     console.log("logout");
-            //     setIsLogedin(false);
-            //   }}
-            // >
-            //   <Link>Logout</Link>
-            // </li>
             <Link to={"/login"}>
               <Button
                 bgColor="bg-sky-700"
@@ -62,9 +53,6 @@ const Header = ({ isLogedIn, setIsLogedin }) => {
                 Login
               </Button>
             </Link>
-            // <li className="md:ml-8 text-xl hover:text-gray-400 duration-500">
-            //   <Link to={"/login"}>Login</Link>
-            // </li>
           )}
         </ul>
       </div>

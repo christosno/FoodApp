@@ -54,7 +54,7 @@ const Body = () => {
             value={inputValue}
             searchHandler={searchHandler}
           />
-          <div className="restaurant-list">
+          <div className="flex flex-wrap justify-center">
             {!isSearchClicked && filteredRestaurants.length === 0 ? (
               <div className="loading">Loading......</div>
             ) : (

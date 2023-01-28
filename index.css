@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.rating {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.rating .fa-star {
+  color: #c4c4c4;
+  font-size: 20px;
+  margin-right: 5px;
+  transition: all 0.3s ease;
+}
+
+.rating .fa-star.active {
+  color: #ffbb00;
+}
