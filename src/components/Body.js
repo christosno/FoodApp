@@ -3,7 +3,6 @@ import RestaurantCard from "./RestaurantCard";
 import { API_CALL } from "../constants";
 import { Link } from "react-router-dom";
 import ErrorComp from "./ErrorComp";
-import "./Body.css";
 import useFetch from "../utils/useFetch";
 // import useFetch from "../utils/useFetch";
 
@@ -49,7 +48,7 @@ const Body = () => {
     const fiteredRestaurants = filterRestaurants(restaurants, inputValue);
     setFilteredRestaurants(fiteredRestaurants);
   };
-
+  console.log(restaurants);
   return (
     <>
       {error ? (
@@ -58,7 +57,7 @@ const Body = () => {
         </div>
       ) : (
         <>
-          <div className="search-container">
+          <div className="search-container p-5 bg-pink-200 m-2">
             <input
               type="text"
               placeholder="search"

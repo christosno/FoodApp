@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import ErrorComp from "./ErrorComp";
 import MenuMainCategory from "./MenuMainCategory";
 import useFetch from "../utils/useFetch";
-import "./RestaurantMenu.css";
 
 const RestaurantMenu = () => {
   const { id } = useParams();

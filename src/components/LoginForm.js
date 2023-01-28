@@ -1,7 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
 import { useOutletContext, useNavigate } from "react-router-dom";
-import "./LoginForm.css";
 
 const LoginForm = () => {
   const [isLogedIn, setIsLogedIn] = useOutletContext();

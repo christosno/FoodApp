@@ -1,5 +1,4 @@
 import { IMG_CDN_URL } from "../constants";
-import "./RestaurantCard.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
