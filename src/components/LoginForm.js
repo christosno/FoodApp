@@ -3,31 +3,13 @@ import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { UserLoginContext } from "../store/user-auth";
+import { validate } from "../utils/loginValidation";
 
 const LoginForm = () => {
-  const { isLogedIn, setIsLogedIn } = useContext(UserLoginContext);
+  const { setIsLogedIn } = useContext(UserLoginContext);
 
   const navigate = useNavigate();
 
-  const validate = (values) => {
-    const errors = {};
-
-    if (!values.firstName) {
-      errors.firstName = "First name isRequired";
-    }
-    if (!values.lastName) {
-      errors.lastName = "Last name is Required";
-    }
-    if (!values.email) {
-      errors.email = "Email is Required";
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-      errors.email = "Invalid email format";
-    }
-
-    return errors;
-  };
   const formik = useFormik({
     initialValues: {
       firstName: "",

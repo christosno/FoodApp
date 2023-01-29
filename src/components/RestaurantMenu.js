@@ -26,7 +26,7 @@ const RestaurantMenu = () => {
   }, []);
 
   return (
-    <div className=" bg-sky-200 mt-16">
+    <div className="bg-sky-200 mt-16 p-10">
       {error ? (
         <>
           <ErrorComp message={error.message} />
@@ -35,18 +35,27 @@ const RestaurantMenu = () => {
       ) : isLoading ? (
         <>Loading...</>
       ) : (
-        <>
-          <div>
-            <h1>Restraunt id: {id}</h1>
-            <h2>{restaurantMenu?.name}</h2>
-            <img src={IMG_CDN_URL + restaurantMenu?.cloudinaryImageId} />
-            <h3>{restaurantMenu?.area}</h3>
-            <h3>{restaurantMenu?.city}</h3>
-            <h3>{restaurantMenu?.avgRating} stars</h3>
-            <h3>{restaurantMenu?.costForTwoMsg}</h3>
+        <div className="grid grid-cols-2 gap-10">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold">{restaurantMenu?.name}</h1>
+            <div className="m-4">
+              <img
+                className="m-auto w-64 h-64 object-cover rounded-md"
+                src={IMG_CDN_URL + restaurantMenu?.cloudinaryImageId}
+                alt={restaurantMenu?.name}
+              />
+            </div>
+            <h3 className="text-lg font-medium mt-4">{restaurantMenu?.area}</h3>
+            <h3 className="text-lg font-medium">{restaurantMenu?.city}</h3>
+            <h3 className="text-lg font-medium">
+              {restaurantMenu?.avgRating} stars
+            </h3>
+            <h3 className="text-lg font-medium">
+              {restaurantMenu?.costForTwoMsg}
+            </h3>
           </div>
           <div>
-            <h1>Menu</h1>
+            <h1 className="text-2xl font-bold">Menu</h1>
             {restaurantMenu?.menu?.widgets.map((item, index) => {
               return (
                 <MenuMainCategory
@@ -57,7 +66,7 @@ const RestaurantMenu = () => {
               );
             })}
           </div>
-        </>
+        </div>
       )}
     </div>
   );

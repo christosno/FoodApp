@@ -23,8 +23,10 @@ const MenuMainCategory = ({ item, totalItems }) => {
   };
   console.log("IN MAIN MENU CATEGORI", menuWidgets);
   return (
-    <>
-      <div onClick={() => MenuCategoryClickHandler(item)}>{item.name}</div>
+    <div className="max-w-sm rounded border cursor-pointer border-gray-300">
+      <div onClick={() => MenuCategoryClickHandler(item)}>
+        <h2 className="font-medium p-2 hover:bg-gray-300">{item.name}</h2>
+      </div>
       {menuWidgets && isChildVisible
         ? menuWidgets.map((innerItem, index) => {
             return (
@@ -43,7 +45,7 @@ const MenuMainCategory = ({ item, totalItems }) => {
             return <MenuItem key={innerItem.id} {...innerItem} />;
           })
         : null}
-    </>
+    </div>
   );
 };
 

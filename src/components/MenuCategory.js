@@ -18,13 +18,15 @@ const MenuCategory = ({ totalItems, item }) => {
   };
 
   return (
-    <div onClick={() => MenuCategoryClickHandler(item)}>
-      <p>Hi!!!!!!!!!!!!!!!!!!!!!1</p>
-      {menuItems && isChildVisible
-        ? menuItems.map((innerItem, index) => {
-            return <MenuItem key={innerItem.id} {...innerItem} />;
-          })
-        : null}
+    <div className="ml-4 max-w-sm rounded border cursor-pointer border-gray-300">
+      <div onClick={() => MenuCategoryClickHandler(item)}>
+        <h2 className="font-medium p-2 hover:bg-gray-300">{item.name}</h2>
+        {menuItems && isChildVisible
+          ? menuItems.map((innerItem, index) => {
+              return <MenuItem key={innerItem.id} {...innerItem} />;
+            })
+          : null}
+      </div>
     </div>
   );
 };
