@@ -44,10 +44,13 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="p-6 mx-auto mt-10 bg-white rounded-lg shadow-md"
+      className="p-4 mx-8 mt-28 bg-sky-400 rounded shadow-md"
     >
       <div className="mb-4">
-        <label htmlFor="firstName" className="block font-bold mb-2">
+        <label
+          htmlFor="firstName"
+          className="block font-[Poppins] text-gray-800 font-bold mb-2"
+        >
           First Name
         </label>
         <input
@@ -56,7 +59,7 @@ const LoginForm = () => {
           type="text"
           id="firstName"
           name="firstName"
-          className="border border-gray-400 p-2 w-full"
+          className="border rounded border-gray-400 p-2 w-full"
         />
         {formik.errors.firstName && formik.touched.firstName ? (
           <div className="text-red-500 font-bold mt-2">
@@ -65,7 +68,10 @@ const LoginForm = () => {
         ) : null}
       </div>
       <div className="mb-4">
-        <label htmlFor="lastName" className="block font-bold mb-2">
+        <label
+          htmlFor="lastName"
+          className="block font-[Poppins] text-gray-800 font-bold mb-2"
+        >
           Last Name
         </label>
         <input
@@ -74,7 +80,7 @@ const LoginForm = () => {
           type="text"
           id="lastName"
           name="lastName"
-          className="border border-gray-400 p-2 w-full"
+          className="border rounded border-gray-400 p-2 w-full"
         />
         {formik.errors.lastName && formik.touched.lastName ? (
           <div className="text-red-500 font-bold mt-2">
@@ -83,7 +89,10 @@ const LoginForm = () => {
         ) : null}
       </div>
       <div className="mb-4">
-        <label htmlFor="email" className="block font-bold mb-2">
+        <label
+          htmlFor="email"
+          className="block font-[Poppins] text-gray-800 font-bold mb-2"
+        >
           E-mail
         </label>
         <input
@@ -92,7 +101,7 @@ const LoginForm = () => {
           type="email"
           id="email"
           name="email"
-          className="border border-gray-400 p-2 w-full"
+          className="border rounded border-gray-400 p-2 w-full"
         />
         {formik.errors.email && formik.touched.email ? (
           <div className="text-red-500 font-bold mt-2">
@@ -104,7 +113,7 @@ const LoginForm = () => {
         type="submit"
         bgColor="bg-sky-700"
         bgHoverColor="bg-sky-600"
-        margin="ml-8"
+        margin="ml-0"
       >
         Submit
       </Button>
