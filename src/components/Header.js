@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserLoginContext } from "../store/user-auth";
 
-const Header = ({ isLogedIn, setIsLogedin }) => {
+const Header = () => {
   const [navIsOpen, setNavIsOpen] = useState(false);
+  const { isLogedIn, setIsLogedIn } = useContext(UserLoginContext);
   return (
     <div className="shadow-md w-full fixed top-0 left-0">
       <div className="md:flex items-center justify-between bg-sky-400 py-4 md:px-10 px-7">
@@ -41,7 +43,16 @@ const Header = ({ isLogedIn, setIsLogedin }) => {
           </li>
           {isLogedIn ? (
             <Link to={"/"}>
-              <Button margin="ml-8 mr-2">Logout</Button>
+              <Button
+                bgColor="bg-sky-700"
+                bgHoverColor="bg-sky-600"
+                margin="ml-8 mr-2"
+                clickHandler={() => {
+                  setIsLogedIn(false);
+                }}
+              >
+                Logout
+              </Button>
             </Link>
           ) : (
             <Link to={"/login"}>

@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useFormik } from "formik";
-import { useOutletContext, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Button from "./Button";
+import { UserLoginContext } from "../store/user-auth";
 
 const LoginForm = () => {
-  const [isLogedIn, setIsLogedIn] = useOutletContext();
+  const { isLogedIn, setIsLogedIn } = useContext(UserLoginContext);
+
   const navigate = useNavigate();
 
   const validate = (values) => {
@@ -39,50 +42,73 @@ const LoginForm = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit} className="login-form">
-      <div className="form-group">
-        <label htmlFor="firstName">First Name</label>
+    <form
+      onSubmit={formik.handleSubmit}
+      className="p-6 mx-auto mt-10 bg-white rounded-lg shadow-md"
+    >
+      <div className="mb-4">
+        <label htmlFor="firstName" className="block font-bold mb-2">
+          First Name
+        </label>
         <input
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           type="text"
           id="firstName"
           name="firstName"
-          className="form-control"
+          className="border border-gray-400 p-2 w-full"
         />
         {formik.errors.firstName && formik.touched.firstName ? (
-          <div className="error-message">{formik.errors.firstName}</div>
+          <div className="text-red-500 font-bold mt-2">
+            {formik.errors.firstName}
+          </div>
         ) : null}
       </div>
-      <div className="form-group">
-        <label htmlFor="lastName">Last Name</label>
+      <div className="mb-4">
+        <label htmlFor="lastName" className="block font-bold mb-2">
+          Last Name
+        </label>
         <input
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           type="text"
           id="lastName"
           name="lastName"
-          className="form-control"
+          className="border border-gray-400 p-2 w-full"
         />
         {formik.errors.lastName && formik.touched.lastName ? (
-          <div className="error-message">{formik.errors.lastName}</div>
+          <div className="text-red-500 font-bold mt-2">
+            {formik.errors.lastName}
+          </div>
         ) : null}
       </div>
-      <div className="form-group">
-        <label htmlFor="email">E-mail</label>
+      <div className="mb-4">
+        <label htmlFor="email" className="block font-bold mb-2">
+          E-mail
+        </label>
         <input
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           type="email"
           id="email"
           name="email"
-          className="form-control"
+          className="border border-gray-400 p-2 w-full"
         />
         {formik.errors.email && formik.touched.email ? (
-          <div className="error-message">{formik.errors.email}</div>
+          <div className="text-red-500 font-bold mt-2">
+            {formik.errors.email}
+          </div>
         ) : null}
       </div>
-      <button type="submit">Submit</button>
+      <Button
+        type="submit"
+        bgColor="bg-sky-700"
+        bgHoverColor="bg-sky-600"
+        margin="ml-8"
+      >
+        Submit
+      </Button>
+      {/* <button type="submit">Submit</button> */}
     </form>
   );
 };

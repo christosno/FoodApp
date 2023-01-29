@@ -9,13 +9,13 @@ import Contact from "./components/Contact";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 import LoginForm from "./components/LoginForm";
+import UserAthProvider from "./store/user-auth";
 
 const AppLayoit = () => {
-  const [isLogedIn, setIsLogedin] = useState(false);
   return (
     <>
-      <Header isLogedIn={isLogedIn} setIsLogedin={setIsLogedin} />
-      <Outlet context={[isLogedIn, setIsLogedin]} />
+      <Header />
+      <Outlet />
       <Footer />
     </>
   );
@@ -53,4 +53,8 @@ const router = createBrowserRouter([
 
 const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
-root.render(<RouterProvider router={router} />);
+root.render(
+  <UserAthProvider>
+    <RouterProvider router={router} />
+  </UserAthProvider>
+);
