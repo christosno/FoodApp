@@ -23,9 +23,11 @@ const MenuMainCategory = ({ item, totalItems }) => {
   };
   console.log("IN MAIN MENU CATEGORI", menuWidgets);
   return (
-    <div className="max-w-sm rounded border cursor-pointer border-gray-300">
+    <div className="rounded border cursor-pointer font-[Poppins] bg-sky-800 text-white">
       <div onClick={() => MenuCategoryClickHandler(item)}>
-        <h2 className="font-medium p-2 hover:bg-gray-300">{item.name}</h2>
+        <h2 className="font-medium p-2 hover:bg-sky-400 hover:text-gray-800">
+          {item.name}
+        </h2>
       </div>
       {menuWidgets && isChildVisible
         ? menuWidgets.map((innerItem, index) => {

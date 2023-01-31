@@ -18,9 +18,11 @@ const MenuCategory = ({ totalItems, item }) => {
   };
 
   return (
-    <div className="ml-4 max-w-sm rounded border cursor-pointer border-gray-300">
+    <div className="ml-4 rounded border cursor-pointer bg-sky-800 text-white">
       <div onClick={() => MenuCategoryClickHandler(item)}>
-        <h2 className="font-medium p-2 hover:bg-gray-300">{item.name}</h2>
+        <h2 className="ont-medium p-2 hover:bg-sky-400 hover:text-gray-800">
+          {item.name}
+        </h2>
         {menuItems && isChildVisible
           ? menuItems.map((innerItem, index) => {
               return <MenuItem key={innerItem.id} {...innerItem} />;

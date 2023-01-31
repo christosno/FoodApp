@@ -26,7 +26,7 @@ const RestaurantMenu = () => {
   }, []);
 
   return (
-    <div className="bg-sky-200 mt-16 p-10">
+    <div className="flex flex-col items-center mt-24">
       {error ? (
         <>
           <ErrorComp message={error.message} />
@@ -35,27 +35,34 @@ const RestaurantMenu = () => {
       ) : isLoading ? (
         <>Loading...</>
       ) : (
-        <div className="grid grid-cols-2 gap-10">
+        <div className="w-full md:w-2/3">
           <div className="text-center">
-            <h1 className="text-2xl font-bold">{restaurantMenu?.name}</h1>
-            <div className="m-4">
+            <h1 className="text-4xl font-[Poppins] text-gray-800">
+              {restaurantMenu?.name}
+            </h1>
+            <div className="my-4">
               <img
-                className="m-auto w-64 h-64 object-cover rounded-md"
+                className="w-64 h-64 object-cover rounded mx-auto"
                 src={IMG_CDN_URL + restaurantMenu?.cloudinaryImageId}
                 alt={restaurantMenu?.name}
               />
             </div>
-            <h3 className="text-lg font-medium mt-4">{restaurantMenu?.area}</h3>
-            <h3 className="text-lg font-medium">{restaurantMenu?.city}</h3>
-            <h3 className="text-lg font-medium">
+            <h3 className="text-lg font-[Poppins] text-gray-800">
+              {restaurantMenu?.area}
+            </h3>
+            <h3 className="text-lg font-[Poppins] text-gray-800">
+              {restaurantMenu?.city}
+            </h3>
+            <h3 className="text-lg font-[Poppins] text-gray-800">
               {restaurantMenu?.avgRating} stars
             </h3>
-            <h3 className="text-lg font-medium">
+            <h3 className="text-lg font-[Poppins] text-gray-800">
               {restaurantMenu?.costForTwoMsg}
             </h3>
           </div>
-          <div>
-            <h1 className="text-2xl font-bold">Menu</h1>
+          <div className="text-center mt-12">
+            <h1 className="text-4xl font-[Poppins] text-gray-800 mb-4">Menu</h1>
+
             {restaurantMenu?.menu?.widgets.map((item, index) => {
               return (
                 <MenuMainCategory
