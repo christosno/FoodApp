@@ -6,7 +6,7 @@ import { UserLoginContext } from "../store/user-auth";
 import { validate } from "../utils/loginValidation";
 
 const LoginForm = () => {
-  const { setIsLogedIn } = useContext(UserLoginContext);
+  const { setIsLogedIn, setUserName } = useContext(UserLoginContext);
 
   const navigate = useNavigate();
 
@@ -17,6 +17,10 @@ const LoginForm = () => {
       email: "",
     },
     onSubmit: () => {
+      setUserName({
+        firstName: formik.values.firstName,
+        lastName: formik.values.lastName,
+      });
       setIsLogedIn(true);
       navigate("/");
     },

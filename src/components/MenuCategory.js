@@ -10,10 +10,10 @@ const MenuCategory = ({ totalItems, item }) => {
     setIsChildVisible(!isChildVisible);
 
     if (item.entities) {
-      const menuEntities = item.entities; // fix the variable name
-      const finalItems = filterMenuItems(totalItems, menuEntities); // put the correct menuEntities
+      const menuEntities = item.entities;
+      const finalItems = filterMenuItems(totalItems, menuEntities);
       console.log("finalItems", finalItems);
-      setMenuItems(finalItems); /// remove it and use setMenuitems
+      setMenuItems(finalItems);
     }
   };
 
