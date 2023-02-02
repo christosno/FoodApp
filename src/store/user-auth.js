@@ -1,10 +1,10 @@
 import React, { useState, createContext } from "react";
 
 export const UserLoginContext = createContext({
-  firstName: "",
-  lastName: "",
+  userName: {},
+  setUserName: () => {},
   isLoggedIn: false,
-  loginHandler: () => {},
+  setIsLogedIn: () => {},
 });
 
 const UserAthProvider = ({ children }) => {

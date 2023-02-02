@@ -10,6 +10,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 import LoginForm from "./components/LoginForm";
 import UserAthProvider from "./store/user-auth";
+import CartContextProvider from "./store/cart";
 
 const AppLayoit = () => {
   return (
@@ -55,6 +56,8 @@ const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
 root.render(
   <UserAthProvider>
-    <RouterProvider router={router} />
+    <CartContextProvider>
+      <RouterProvider router={router} />
+    </CartContextProvider>
   </UserAthProvider>
 );
