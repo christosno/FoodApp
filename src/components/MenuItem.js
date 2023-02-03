@@ -10,13 +10,14 @@ const MenuItem = ({ id, name, price, cloudinaryImageId, description }) => {
   const orderHandler = () => {
     console.log(order);
     if (numItmes > 0) {
-      setOrder({
+      setOrder([
         ...order,
-        [id]: {
-          name: name,
-          numItems: numItmes,
+        {
+          id,
+          name,
+          numItmes,
         },
-      });
+      ]);
     }
   };
 
@@ -56,14 +57,16 @@ const MenuItem = ({ id, name, price, cloudinaryImageId, description }) => {
             +
           </div>
         </div>
-        <Button
-          bgColor="bg-sky-700"
-          bgHoverColor="bg-sky-600"
-          margin="ml-8 mr-2"
-          clickHandler={orderHandler}
-        >
-          Add
-        </Button>
+        <div className="flex justify-center items-center">
+          <Button
+            bgColor="bg-sky-700"
+            bgHoverColor="bg-sky-600"
+            margin="ml-8 mr-2"
+            clickHandler={orderHandler}
+          >
+            Add
+          </Button>
+        </div>
       </div>
     </div>
   );

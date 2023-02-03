@@ -12,7 +12,7 @@ const Button = ({
     <button
       type={type}
       onClick={clickHandler}
-      className={`${bgColor} text-white forn-[Poppins] py-2 px-6 rounded md:${margin} hover:${bgHoverColor} duration-500`}
+      className={`${bgColor} max-h-10 text-white forn-[Poppins] py-2 px-6 rounded md:${margin} hover:${bgHoverColor} duration-500`}
     >
       {children}
     </button>

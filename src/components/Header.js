@@ -4,11 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import { UserLoginContext } from "../store/user-auth";
+import { CartContexrt } from "../store/cart";
+import CartModal from "./CartModal";
 
 const Header = () => {
   const [navIsOpen, setNavIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { userName, isLogedIn, setIsLogedIn } = useContext(UserLoginContext);
-  console.log(navIsOpen);
+
   return (
     <div className="shadow-md w-full fixed top-0 left-0">
       <div className="md:flex items-center justify-between bg-sky-400 py-4 md:px-10 px-7">
@@ -39,9 +42,18 @@ const Header = () => {
           <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500">
             <Link to={"/contact"}>Contact</Link>
           </li>
-          <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500">
+          <li
+            onClick={() => setIsModalOpen(true)}
+            className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500"
+          >
             <Link>Cart</Link>
           </li>
+          <div>
+            <CartModal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+            />
+          </div>
 
           {isLogedIn ? (
             <>
