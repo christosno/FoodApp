@@ -1,6 +1,7 @@
 import React from "react";
 
 const CartModalItem = ({ name, id, numItmes }) => {
+  console.log("CartModalItem Component");
   return (
     <div className="flex justify-between p-8  mt-4 md:mt-0">
       <div>

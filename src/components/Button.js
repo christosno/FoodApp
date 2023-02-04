@@ -8,11 +8,12 @@ const Button = ({
   children,
   type = null,
 }) => {
+  console.log("Button Component");
   return (
     <button
       type={type}
       onClick={clickHandler}
-      className={`${bgColor} max-h-10 text-white forn-[Poppins] py-2 px-6 rounded md:${margin} hover:${bgHoverColor} duration-500`}
+      className={`${bgColor} text-white forn-[Poppins] py-2 px-6 rounded md:${margin} hover:${bgHoverColor} duration-500`}
     >
       {children}
     </button>

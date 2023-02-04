@@ -6,6 +6,7 @@ import { UserLoginContext } from "../store/user-auth";
 import { validate } from "../utils/loginValidation";
 
 const LoginForm = () => {
+  console.log("LoginForm Component");
   const { setIsLogedIn, setUserName } = useContext(UserLoginContext);
 
   const navigate = useNavigate();

@@ -8,6 +8,7 @@ import Search from "./Search";
 import { filterRestaurants } from "../utils/filterReataurnats";
 
 const Body = () => {
+  console.log("Body Component");
   const [inputValue, setInputValue] = useState("");
   const [restaurants, setRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);

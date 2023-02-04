@@ -6,6 +6,7 @@ import MenuMainCategory from "./MenuMainCategory";
 import useFetch from "../utils/useFetch";
 
 const RestaurantMenu = () => {
+  console.log("RestaurantMenu Component");
   const { id } = useParams();
   const [restaurantMenu, setRestaurantMenu] = useState(null);
 

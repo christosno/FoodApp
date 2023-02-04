@@ -4,8 +4,8 @@ import { CartContexrt } from "../store/cart";
 import CartModalItem from "./CartModalItem";
 
 const CartModal = ({ isOpen, onClose }) => {
+  console.log("CartModal Component");
   const { order } = useContext(CartContexrt);
-  console.log(order.length);
   return ReactDOM.createPortal(
     <div
       className={`fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-75 ${

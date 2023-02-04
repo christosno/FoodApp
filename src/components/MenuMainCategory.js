@@ -4,6 +4,7 @@ import MenuItem from "./MenuItem";
 import { filterMenuItems } from "../utils/filterMenuItems";
 
 const MenuMainCategory = ({ item, totalItems }) => {
+  console.log("MenuMainCategory Component");
   const [menuWidgets, setMenuWidgents] = useState(null);
   const [menuItems, setMenuItems] = useState(null);
   const [isChildVisible, setIsChildVisible] = useState(false);

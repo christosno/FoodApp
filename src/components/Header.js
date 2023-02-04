@@ -8,9 +8,13 @@ import { CartContexrt } from "../store/cart";
 import CartModal from "./CartModal";
 
 const Header = () => {
+  console.log("Header Component");
   const [navIsOpen, setNavIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { userName, isLogedIn, setIsLogedIn } = useContext(UserLoginContext);
+  const { order } = useContext(CartContexrt);
+
+  const numOfItems = order.length;
 
   return (
     <div className="shadow-md w-full fixed top-0 left-0">
@@ -46,7 +50,7 @@ const Header = () => {
             onClick={() => setIsModalOpen(true)}
             className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500"
           >
-            <Link>Cart</Link>
+            <Link>Cart{numOfItems > 0 ? <>-{numOfItems}</> : null}</Link>
           </li>
           <div>
             <CartModal

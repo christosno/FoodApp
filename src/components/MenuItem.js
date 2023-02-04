@@ -4,6 +4,7 @@ import Button from "./Button";
 import { CartContexrt } from "../store/cart";
 
 const MenuItem = ({ id, name, price, cloudinaryImageId, description }) => {
+  console.log("MenuItem Component");
   const [numItmes, setNumItmes] = useState(0);
   const { order, setOrder } = useContext(CartContexrt);
 
@@ -64,7 +65,7 @@ const MenuItem = ({ id, name, price, cloudinaryImageId, description }) => {
             margin="ml-8 mr-2"
             clickHandler={orderHandler}
           >
-            Add
+            <p className="text-sm">Add to Cart</p>
           </Button>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import Button from "./Button";
 
 const Search = ({ value, inputHandler, searchHandler }) => {
+  console.log("Search Component");
   return (
     <div className="w-full pt-24 flex mb-4 ml-1">
       <input

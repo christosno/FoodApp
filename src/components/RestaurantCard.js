@@ -12,6 +12,7 @@ const RestaurantCard = ({
   aggregatedDiscountInfo,
 }) => {
   const { shortDescriptionList } = aggregatedDiscountInfo;
+  console.log("RestaurantCard Component");
   return (
     <div className="bg-white max-w-sm rounded overflow-hidden shadow-lg m-6">
       <img
