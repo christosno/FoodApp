@@ -31,12 +31,12 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="p-4 mx-8 mt-28 bg-sky-400 rounded shadow-md"
+      className="w-1/2 p-4 mx-auto mt-28 bg-slate-700 rounded shadow-xl"
     >
       <div className="mb-4">
         <label
           htmlFor="firstName"
-          className="block font-[Poppins] text-gray-800 font-bold mb-2"
+          className="text-white block font-[Poppins] font-bold mb-2"
         >
           First Name
         </label>
@@ -57,7 +57,7 @@ const LoginForm = () => {
       <div className="mb-4">
         <label
           htmlFor="lastName"
-          className="block font-[Poppins] text-gray-800 font-bold mb-2"
+          className="block font-[Poppins] text-white font-bold mb-2"
         >
           Last Name
         </label>
@@ -78,7 +78,7 @@ const LoginForm = () => {
       <div className="mb-4">
         <label
           htmlFor="email"
-          className="block font-[Poppins] text-gray-800 font-bold mb-2"
+          className="block font-[Poppins] text-white font-bold mb-2"
         >
           E-mail
         </label>
@@ -98,8 +98,8 @@ const LoginForm = () => {
       </div>
       <Button
         type="submit"
-        bgColor="bg-sky-700"
-        bgHoverColor="bg-sky-600"
+        bgColor="bg-slate-900"
+        bgHoverColor="bg-slate-800"
         margin="ml-0"
       >
         Submit

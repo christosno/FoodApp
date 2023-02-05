@@ -24,9 +24,9 @@ const MenuMainCategory = ({ item, totalItems }) => {
   };
   console.log("IN MAIN MENU CATEGORI", menuWidgets);
   return (
-    <div className="rounded border cursor-pointer font-[Poppins] bg-sky-800 text-white">
+    <div className="rounded m-0.5 cursor-pointer font-[Poppins] bg-slate-900 text-white">
       <div onClick={() => MenuCategoryClickHandler(item)}>
-        <h2 className="font-medium p-2 hover:bg-sky-400 hover:text-gray-800">
+        <h2 className="font-medium p-2 bg-slate-900 hover:bg-slate-800">
           {item.name}
         </h2>
       </div>

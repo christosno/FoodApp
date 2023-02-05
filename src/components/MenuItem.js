@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { IMG_URL_MENU_ITEM } from "../constants";
 import Button from "./Button";
 import { CartContexrt } from "../store/cart";
+import MenuItemForm from "./MenuItemForm";
 
 const MenuItem = ({ id, name, price, cloudinaryImageId, description }) => {
   console.log("MenuItem Component");
@@ -23,20 +24,21 @@ const MenuItem = ({ id, name, price, cloudinaryImageId, description }) => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row p-6 rounded border cursor-pointer bg-white text-black">
-      <div className="w-full md:w-1/3 md:mr-6">
+    <div className="flex justify-between m-2 p-2 rounded items-center bg-white">
+      <div className="w-full md:w-1/3 md:mr-4 ">
         <img
-          className="w-32 h-32 object-cover rounded mx-auto mt-4"
+          className="w-32 h-32 object-cover rounded mx-auto"
           src={IMG_URL_MENU_ITEM + cloudinaryImageId}
           alt={name}
         />
       </div>
       <div className="w-full md:w-2/3">
-        <h1 className="text-lg font-medium">{name}</h1>
+        <h1 className="text-lg text-gray-600 font-semibold">{name}</h1>
         <p className="text-sm text-gray-600 p-4">{description}</p>
-        <p className="text-sm font-semibold p-2">{`${price}$`}</p>
+        <p className="inline-block text-sm rounded bg-slate-200 text-gray-600 font-semibold p-2">{`${price}$`}</p>
       </div>
-      <div className="flex justify-end p-8  mt-4 md:mt-0">
+      <MenuItemForm />
+      {/* <div className="flex justify-end p-8  mt-4 md:mt-0">
         <div className="flex items-center">
           <div
             onClick={() => {
@@ -68,7 +70,7 @@ const MenuItem = ({ id, name, price, cloudinaryImageId, description }) => {
             <p className="text-sm">Add to Cart</p>
           </Button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

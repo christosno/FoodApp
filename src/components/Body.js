@@ -43,7 +43,7 @@ const Body = () => {
   };
   console.log(restaurants);
   return (
-    <div className=" bg-sky-200">
+    <div className=" bg-slate-700 ">
       {error ? (
         <div className="error-container">
           <ErrorComp message={error.message} />
@@ -55,7 +55,7 @@ const Body = () => {
             value={inputValue}
             searchHandler={searchHandler}
           />
-          <div className="flex flex-wrap justify-center">
+          <div className="flex flex-wrap justify-center  w-2/3 m-auto">
             {!isSearchClicked && filteredRestaurants.length === 0 ? (
               <div className="loading">Loading......</div>
             ) : (

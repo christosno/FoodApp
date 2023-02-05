@@ -13,8 +13,8 @@ const Search = ({ value, inputHandler, searchHandler }) => {
         className="bg-white focus:outline-none focus:shadow-outline-blue border border-gray-300 rounded py-2 pr-4 pl-8 block w-full appearance-none leading-normal"
       />
       <Button
-        bgColor="bg-sky-500"
-        bgHoverColor="bg-sky-400"
+        bgColor="bg-slate-900"
+        bgHoverColor="bg-slate-800"
         margin="ml-1 mr-2"
         clickHandler={searchHandler}
       >

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import ErrorComp from "./ErrorComp";
 import MenuMainCategory from "./MenuMainCategory";
 import useFetch from "../utils/useFetch";
+import RatingStars from "./RatingStars";
 
 const RestaurantMenu = () => {
   console.log("RestaurantMenu Component");
@@ -38,31 +39,29 @@ const RestaurantMenu = () => {
       ) : (
         <div className="w-full md:w-2/3">
           <div className="text-center">
-            <h1 className="text-4xl font-[Poppins] text-gray-800">
+            <h1 className="text-4xl font-[Poppins] text-white">
               {restaurantMenu?.name}
             </h1>
             <div className="my-4">
               <img
-                className="w-64 h-64 object-cover rounded mx-auto"
+                className="w-128 h-64 object-cover rounded mx-auto"
                 src={IMG_CDN_URL + restaurantMenu?.cloudinaryImageId}
                 alt={restaurantMenu?.name}
               />
             </div>
-            <h3 className="text-lg font-[Poppins] text-gray-800">
+            <h3 className="text-lg font-[Poppins] text-white">
               {restaurantMenu?.area}
             </h3>
-            <h3 className="text-lg font-[Poppins] text-gray-800">
+            <h3 className="text-lg font-[Poppins] text-white">
               {restaurantMenu?.city}
             </h3>
-            <h3 className="text-lg font-[Poppins] text-gray-800">
-              {restaurantMenu?.avgRating} stars
-            </h3>
-            <h3 className="text-lg font-[Poppins] text-gray-800">
+            <RatingStars avgRating={restaurantMenu?.avgRating} />
+            <h3 className="text-lg font-[Poppins] text-white">
               {restaurantMenu?.costForTwoMsg}
             </h3>
           </div>
           <div className="text-center mt-12">
-            <h1 className="text-4xl font-[Poppins] text-gray-800 mb-4">Menu</h1>
+            <h1 className="text-4xl font-[Poppins] text-white mb-4">Menu</h1>
 
             {restaurantMenu?.menu?.widgets.map((item, index) => {
               return (

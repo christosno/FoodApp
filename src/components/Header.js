@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { UserLoginContext } from "../store/user-auth";
 import { CartContexrt } from "../store/cart";
 import CartModal from "./CartModal";
+import HeaderCardButton from "./HeaderCardButton";
 
 const Header = () => {
   console.log("Header Component");
@@ -18,10 +19,10 @@ const Header = () => {
 
   return (
     <div className="shadow-md w-full fixed top-0 left-0">
-      <div className="md:flex items-center justify-between bg-sky-400 py-4 md:px-10 px-7">
+      <div className="md:flex items-center justify-between bg-red-900 py-4 md:px-10 px-7">
         <div className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800">
           <Link to={"/"}>
-            <h1 id="title" key="h2">
+            <h1 className="text-white" id="title" key="h2">
               Food App
             </h1>
           </Link>
@@ -33,24 +34,26 @@ const Header = () => {
           </div>
         </div>
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-sky-400 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transistion-all duration-500 ease-in ${
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-red-900 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transistion-all duration-500 ease-in ${
             navIsOpen ? "top-20 opacity-100" : "top-[-490px]"
           } md:opacity-100`}
         >
-          <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500">
+          <li className="text-white md:ml-8 text-xl md:my-0 my-7 font-[Poppins]  hover:text-gray-400 duration-500">
             <Link to={"/"}>Home</Link>
           </li>
-          <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500">
+          <li className="text-white md:ml-8 text-xl md:my-0 my-7 font-[Poppins]  hover:text-gray-400 duration-500">
             <Link to={"/about"}>About Us</Link>
           </li>
-          <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500">
+          <li className="text-white md:ml-8 text-xl md:my-0 my-7 font-[Poppins]  hover:text-gray-400 duration-500">
             <Link to={"/contact"}>Contact</Link>
           </li>
           <li
             onClick={() => setIsModalOpen(true)}
             className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500"
           >
-            <Link>Cart{numOfItems > 0 ? <>-{numOfItems}</> : null}</Link>
+            <Link>
+              <HeaderCardButton />
+            </Link>
           </li>
           <div>
             <CartModal
@@ -66,8 +69,8 @@ const Header = () => {
               </h5>
               <Link to={"/"}>
                 <Button
-                  bgColor="bg-sky-700"
-                  bgHoverColor="bg-sky-600"
+                  bgColor="bg-slate-900"
+                  bgHoverColor="bg-slate-800"
                   margin="ml-8 mr-2"
                   clickHandler={() => {
                     setIsLogedIn(false);
@@ -80,8 +83,8 @@ const Header = () => {
           ) : (
             <Link to={"/login"}>
               <Button
-                bgColor="bg-sky-700"
-                bgHoverColor="bg-sky-600"
+                bgColor="bg-slate-900"
+                bgHoverColor="bg-slate-800"
                 margin="ml-8"
               >
                 Login
