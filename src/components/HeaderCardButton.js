@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
-const HeaderCardButton = ({ onOpenModal }) => {
+const HeaderCardButton = ({ onOpenModal, numItems }) => {
   return (
     <button
       onClick={onOpenModal}
@@ -13,7 +13,7 @@ const HeaderCardButton = ({ onOpenModal }) => {
       </span>
       <span className="text-white text-lg font-[Poppins]">Your Cart</span>
       <span className="badge ml-2 bg-slate-700 text-white font-[Poppins] rounded py-1 px-2 font-bold">
-        3
+        {numItems}
       </span>
     </button>
   );

@@ -11,9 +11,11 @@ const Header = ({ onOpenModal }) => {
   console.log("Header Component");
   const [navIsOpen, setNavIsOpen] = useState(false);
   const { userName, isLogedIn, setIsLogedIn } = useContext(UserLoginContext);
-  const { order } = useContext(CartContexrt);
+  const { items } = useContext(CartContexrt);
 
-  const numOfItems = order.length;
+  const numItems = items.reduce((curVal, item) => {
+    return curVal + item.amount;
+  }, 0);
 
   return (
     <div className="shadow-md w-full fixed top-0 left-0">
@@ -47,7 +49,7 @@ const Header = ({ onOpenModal }) => {
           </li>
           <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500">
             <Link>
-              <HeaderCardButton onOpenModal={onOpenModal} />
+              <HeaderCardButton numItems={numItems} onOpenModal={onOpenModal} />
             </Link>
           </li>
 

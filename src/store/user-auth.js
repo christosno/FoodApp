@@ -7,7 +7,7 @@ export const UserLoginContext = createContext({
   setIsLogedIn: () => {},
 });
 
-const UserAthProvider = ({ children }) => {
+const UserAuthProvider = ({ children }) => {
   const [isLogedIn, setIsLogedIn] = useState(false);
   const [userName, setUserName] = useState({ firstName: "", lastName: "" });
   return (
@@ -19,4 +19,4 @@ const UserAthProvider = ({ children }) => {
   );
 };
 
-export default UserAthProvider;
+export default UserAuthProvider;
