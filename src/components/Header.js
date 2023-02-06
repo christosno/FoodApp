@@ -5,13 +5,11 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import { UserLoginContext } from "../store/user-auth";
 import { CartContexrt } from "../store/cart";
-import CartModal from "./CartModal";
 import HeaderCardButton from "./HeaderCardButton";
 
-const Header = () => {
+const Header = ({ onOpenModal }) => {
   console.log("Header Component");
   const [navIsOpen, setNavIsOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const { userName, isLogedIn, setIsLogedIn } = useContext(UserLoginContext);
   const { order } = useContext(CartContexrt);
 
@@ -47,20 +45,11 @@ const Header = () => {
           <li className="text-white md:ml-8 text-xl md:my-0 my-7 font-[Poppins]  hover:text-gray-400 duration-500">
             <Link to={"/contact"}>Contact</Link>
           </li>
-          <li
-            onClick={() => setIsModalOpen(true)}
-            className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500"
-          >
+          <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500">
             <Link>
-              <HeaderCardButton />
+              <HeaderCardButton onOpenModal={onOpenModal} />
             </Link>
           </li>
-          <div>
-            <CartModal
-              isOpen={isModalOpen}
-              onClose={() => setIsModalOpen(false)}
-            />
-          </div>
 
           {isLogedIn ? (
             <>

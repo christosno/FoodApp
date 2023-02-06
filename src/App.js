@@ -11,11 +11,23 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import LoginForm from "./components/LoginForm";
 import UserAthProvider from "./store/user-auth";
 import CartContextProvider from "./store/cart";
+import CartModal from "./components/CartModal";
 
 const AppLayoit = () => {
+  const [isModalOn, setIsModalOn] = useState(false);
+
+  const openCardModalHandler = () => {
+    setIsModalOn(true);
+  };
+
+  const closeCardModalHandler = () => {
+    setIsModalOn(false);
+  };
+
   return (
     <>
-      <Header />
+      {isModalOn && <CartModal onCloseModal={closeCardModalHandler} />}
+      <Header onOpenModal={openCardModalHandler} />
       <Outlet />
       <Footer />
     </>
