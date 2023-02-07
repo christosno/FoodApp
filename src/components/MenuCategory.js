@@ -26,7 +26,7 @@ const MenuCategory = ({ totalItems, item }) => {
         </h2>
         {menuItems && isChildVisible
           ? menuItems.map((innerItem, index) => {
-              return <MenuItem key={innerItem.id} {...innerItem} />;
+              return <MenuItem key={innerItem.id} item={innerItem} />;
             })
           : null}
       </div>

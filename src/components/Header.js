@@ -11,7 +11,10 @@ const Header = ({ onOpenModal }) => {
   console.log("Header Component");
   const [navIsOpen, setNavIsOpen] = useState(false);
   const { userName, isLogedIn, setIsLogedIn } = useContext(UserLoginContext);
-  const { items } = useContext(CartContexrt);
+  const { items, totalAmount } = useContext(CartContexrt);
+
+  console.log("Header Items", items);
+  console.log("Header totalAmount", totalAmount);
 
   const numItems = items.reduce((curVal, item) => {
     return curVal + item.amount;

@@ -45,7 +45,7 @@ const MenuMainCategory = ({ item, totalItems }) => {
       {menuItems && isChildVisible
         ? menuItems.map((innerItem, index) => {
             console.log("INNER ITEM !!!", innerItem);
-            return <MenuItem key={innerItem.id} {...innerItem} />;
+            return <MenuItem key={innerItem.id} item={innerItem} />;
           })
         : null}
     </div>
