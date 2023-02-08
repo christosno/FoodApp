@@ -8,27 +8,12 @@ import MenuItemForm from "./MenuItemForm";
 
 const MenuItem = ({ item }) => {
   console.log("MenuItem Component");
-  // const [numItmes, setNumItmes] = useState(0);
   const { addItem, removeItem } = useContext(CartContexrt);
 
   const onAddToCartHandler = (amount) => {
     const newItem = { ...item, amount: amount };
     console.log(newItem);
     addItem(newItem);
-  };
-
-  const orderHandler = () => {
-    console.log(order);
-    if (numItmes > 0) {
-      setOrder([
-        ...order,
-        {
-          id,
-          name,
-          numItmes,
-        },
-      ]);
-    }
   };
 
   return (

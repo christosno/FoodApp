@@ -12,7 +12,7 @@ const Backdrop = ({ onCloseModal }) => {
 
 const ModalOverlay = ({ children }) => {
   return (
-    <div className="fixed top-24 w-full bg-white p-4 rounded shadow-xl z-30 md:w-2/4 md:inset-x-1/4">
+    <div className="fixed top-24 w-full bg-white p-4 rounded shadow-xl z-30 md:w-10/12 md:inset-x-0 md:mx-auto">
       <div>{children}</div>
     </div>
   );

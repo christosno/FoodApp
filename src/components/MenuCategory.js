@@ -19,9 +19,9 @@ const MenuCategory = ({ totalItems, item }) => {
   };
 
   return (
-    <div className="ml-4 rounded border cursor-pointer bg-sky-800 text-white">
+    <div className="ml-4 rounded cursor-pointer bg-slate-800 text-white">
       <div onClick={() => MenuCategoryClickHandler(item)}>
-        <h2 className="ont-medium p-2 hover:bg-sky-400 hover:text-gray-800">
+        <h2 className="ont-medium p-2 hover:bg-slate-700 hover:text-white">
           {item.name}
         </h2>
         {menuItems && isChildVisible

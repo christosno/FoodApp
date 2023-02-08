@@ -1,22 +1,27 @@
 import React from "react";
 
-const CartModalItem = ({ name, id, numItmes }) => {
+const CartModalItem = ({ name, amount, price, onRemove, onAdd }) => {
   console.log("CartModalItem Component");
+  console.log(price);
+  const fixedPrice = `$${price.toFixed(2)}`;
   return (
-    <div className="flex justify-between p-8  mt-4 md:mt-0">
-      <div>
-        <h1>{name}</h1>
+    <li className="flex justify-between items-center border-solid border-2 border-slate-500 rounded p-4 my-4 mx-0">
+      <h2 className="mb-2 text-slate-800 w-40">{name}</h2>
+      <div className="flex w-40 justify-between items-center">
+        <span className="text-slate-800 w-20">{fixedPrice}</span>
+        <span className="text-2xl text-white bg-slate-800 border-solid border-2 border-slate-500 rounded p-2">
+          x {amount}
+        </span>
       </div>
-      <div className="flex items-center">
-        <div className="w-10 h-5 text-white forn-[Poppins]  rounded bg-sky-600 text-sm font-medium">
+      <div className="flex flex-col md:flex-row">
+        <button className="text-white bg-slate-800 text-2xl border-solid border-2 border-slate-500 rounded w-12 text-center  cursor-pointer m-1 ml-4 hover:bg-slate-700  active:bg-slate-500 ">
           -
-        </div>
-        <div className="px-2 text-sm text-black font-medium">{numItmes}</div>
-        <div className="w-10 h-5 text-white forn-[Poppins]  rounded bg-sky-600 text-sm font-medium">
+        </button>
+        <button className="text-white bg-slate-800 text-2xl border-solid border-2 border-slate-500 rounded w-12 text-center cursor-pointer m-1 ml-4 hover:bg-slate-700  active:bg-slate-500 ">
           +
-        </div>
+        </button>
       </div>
-    </div>
+    </li>
   );
 };
 
