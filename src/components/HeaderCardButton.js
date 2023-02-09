@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const HeaderCardButton = ({ onOpenModal, numItems }) => {
+  const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
+
+  const buttonId = btnIsHighlighted ? "cart-button" : "";
+
+  useEffect(() => {
+    if (numItems === 0) {
+      return;
+    }
+    setBtnIsHighlighted(true);
+
+    const timer = setTimeout(() => {
+      setBtnIsHighlighted(false);
+    }, 300);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [numItems]);
+
   return (
     <button
+      id={buttonId}
       onClick={onOpenModal}
       className="cursor-pointer font-bold border border-transparent bg-slate-900 text-white py-2 px-6 rounded hover:bg-slate-800 active:bg-slate-800 duration-500"
     >

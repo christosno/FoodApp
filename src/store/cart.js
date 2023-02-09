@@ -65,9 +65,10 @@ const cartReducer = (state, action) => {
       console.log(updatedItems);
     } else {
       console.log("remove complete the item");
-      updatedItems = state.items
-        .slice(0, itemIndex)
-        .concat(state.items.slice(itemIndex + 1));
+      updatedItems = state.items.filter((item) => item.id !== action.id);
+      // updatedItems = state.items
+      //   .slice(0, itemIndex)
+      //   .concat(state.items.slice(itemIndex + 1));
 
       console.log(updatedItems);
     }
