@@ -14,10 +14,16 @@ const CartModalItem = ({ name, amount, price, onRemove, onAdd }) => {
         </span>
       </div>
       <div className="flex flex-col md:flex-row">
-        <button className="text-white bg-slate-800 text-2xl border-solid border-2 border-slate-500 rounded w-12 text-center  cursor-pointer m-1 ml-4 hover:bg-slate-700  active:bg-slate-500 ">
+        <button
+          onClick={onRemove}
+          className="text-white bg-slate-800 text-2xl border-solid border-2 border-slate-500 rounded w-12 text-center  cursor-pointer m-1 ml-4 hover:bg-slate-700  active:bg-slate-500 "
+        >
           -
         </button>
-        <button className="text-white bg-slate-800 text-2xl border-solid border-2 border-slate-500 rounded w-12 text-center cursor-pointer m-1 ml-4 hover:bg-slate-700  active:bg-slate-500 ">
+        <button
+          onClick={onAdd}
+          className="text-white bg-slate-800 text-2xl border-solid border-2 border-slate-500 rounded w-12 text-center cursor-pointer m-1 ml-4 hover:bg-slate-700  active:bg-slate-500 "
+        >
           +
         </button>
       </div>
