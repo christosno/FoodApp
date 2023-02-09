@@ -44,7 +44,7 @@ const CartModal = ({ onCloseModal }) => {
       <div className="text-right">
         <button
           onClick={onCloseModal}
-          className="cursor-pointer bg-transparent border-solid border-2 border-slate-500 rounded ml-4 py-2 px-8 hover:bg-slate-500 hover:text-white active:bg-slate-500 active:text-white"
+          className="cursor-pointer bg-transparent border-solid border-2 border-red-900 rounded ml-4 py-2 px-8 bg-red-800 text-white hover:bg-red-900  active:bg-red-900 "
         >
           Close
         </button>

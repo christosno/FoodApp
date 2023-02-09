@@ -22,11 +22,15 @@ const MenuMainCategory = ({ item, totalItems }) => {
       setMenuItems(finalItems);
     }
   };
+
   console.log("IN MAIN MENU CATEGORI", menuWidgets);
   return (
-    <div className="rounded m-0.5 cursor-pointer font-[Poppins] bg-slate-900 text-white">
-      <div onClick={() => MenuCategoryClickHandler(item)}>
-        <h2 className="font-medium p-2 bg-slate-900 hover:bg-slate-800">
+    <div className="py-1 rounded m-0.5 cursor-pointer font-[Poppins] bg-slate-900 text-white">
+      <div>
+        <h2
+          onClick={() => MenuCategoryClickHandler(item)}
+          className="font-medium p-2 bg-slate-900 hover:bg-slate-800"
+        >
           {item.name}
         </h2>
       </div>

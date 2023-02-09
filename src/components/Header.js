@@ -31,26 +31,26 @@ const Header = ({ onOpenModal }) => {
           </Link>
           <div
             onClick={() => setNavIsOpen(!navIsOpen)}
-            className="text-3xl absolute right-8 top-5 cursor-pointer md:hidden"
+            className="text-3xl absolute right-8 top-5 cursor-pointer lg:hidden"
           >
             <FontAwesomeIcon icon={faBars} />
           </div>
         </div>
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-red-900 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transistion-all duration-500 ease-in ${
+          className={`lg:flex lg:items-center lg:pb-0 pb-12 absolute lg:static bg-red-900 lg:z-auto z-[-1] left-0 w-full lg:w-auto lg:pl-0 pl-9 transistion-all duration-500 ease-in ${
             navIsOpen ? "top-20 opacity-100" : "top-[-490px]"
-          } md:opacity-100`}
+          } lg:opacity-100`}
         >
-          <li className="text-white md:ml-8 text-xl md:my-0 my-7 font-[Poppins]  hover:text-gray-400 duration-500">
+          <li className="text-white lg:ml-8 text-xl lg:my-0 my-7 font-[Poppins]  hover:text-gray-400 duration-500">
             <Link to={"/"}>Home</Link>
           </li>
-          <li className="text-white md:ml-8 text-xl md:my-0 my-7 font-[Poppins]  hover:text-gray-400 duration-500">
+          <li className="text-white lg:ml-8 text-xl lg:my-0 my-7 font-[Poppins]  hover:text-gray-400 duration-500">
             <Link to={"/about"}>About Us</Link>
           </li>
-          <li className="text-white md:ml-8 text-xl md:my-0 my-7 font-[Poppins]  hover:text-gray-400 duration-500">
+          <li className="text-white lg:ml-8 text-xl lg:my-0 my-7 font-[Poppins]  hover:text-gray-400 duration-500">
             <Link to={"/contact"}>Contact</Link>
           </li>
-          <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500">
+          <li className="lg:ml-8 text-xl lg:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500">
             <Link>
               <HeaderCardButton numItems={numItems} onOpenModal={onOpenModal} />
             </Link>
@@ -58,7 +58,7 @@ const Header = ({ onOpenModal }) => {
 
           {isLogedIn ? (
             <>
-              <h5 className="md:ml-8 text-xs md:my-0 my-7 text-gray-800">
+              <h5 className="lg:ml-8 text-xs lg:my-0 my-7 text-gray-800">
                 {`${userName.firstName} ${userName.lastName}`}
               </h5>
               <Link to={"/"}>
