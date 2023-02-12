@@ -1,28 +1,38 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Button from "./Button";
 import RadioInput from "./RadioInput";
+import { SearchContext } from "../store/search-ctx";
 
-const Search = ({ value, inputHandler, searchHandler }) => {
+const Search = () => {
+  const [inputValue, setInputValue] = useState("");
+  const searchCtx = useContext(SearchContext);
+
+  const searchHandler = () => {};
+
+  const inputHandler = (e) => {
+    console.log(e.target.value);
+    setInputValue(e.target.value);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      searchCtx.setSearchOptions(inputValue);
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [inputValue]);
+
   console.log("Search Component");
   return (
-    <div className="flex flex-col w-full pt-24 mb-4 ml-1">
-      {/* <div className="flex m-2 rounded bg-slate-500 p-1 w-4/6 md:w-1/4 lg:w-1/4 justify-center items-baseline">
-        <h3 className="text-white">Search by</h3>
-        <div className="flex">
-          <button className="bg-slate-900 ml-2 p-2 rounded text-white cursor-pointer  hover:bg-slate-700 active:bg-slate-700">
-            Name
-          </button>
-          <button className="bg-slate-900 ml-2 p-2 rounded text-white cursor-pointer  hover:bg-slate-700 active:bg-slate-700">
-            Cusine
-          </button>
-        </div>
-      </div> */}
+    <div className="flex flex-col w-full pt-24 mb-1">
       <RadioInput />
-      <div className="w-full flex mb-4 ml-1">
+      <div className="w-full flex mb-4">
         <input
           type="text"
           placeholder="Search"
-          value={value}
+          value={inputValue}
           onChange={inputHandler}
           className="bg-white focus:outline-none focus:shadow-outline-blue border border-gray-300 rounded py-2 pr-4 pl-8 block w-full appearance-none leading-normal"
         />
@@ -30,7 +40,7 @@ const Search = ({ value, inputHandler, searchHandler }) => {
         <Button
           bgColor="bg-slate-900"
           bgHoverColor="bg-slate-800"
-          margin="ml-1 mr-2"
+          margin=""
           clickHandler={searchHandler}
         >
           Search

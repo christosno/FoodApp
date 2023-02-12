@@ -1,24 +1,26 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { API_CALL } from "../constants";
 import { Link } from "react-router-dom";
 import ErrorComp from "./ErrorComp";
 import useFetch from "../utils/useFetch";
 import Search from "./Search";
-import { filterRestaurants } from "../utils/filterReataurnats";
+import { SearchContext } from "../store/search-ctx";
+import SearchOptions from "./SearchOptions";
 
 const Body = () => {
   console.log("Body Component");
-  const [inputValue, setInputValue] = useState("");
-  const [restaurants, setRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [isSearchClicked, setIsSearchClikted] = useState(false);
+
+  const searchCtx = useContext(SearchContext);
 
   const applyData = (restaurantData) => {
     const restaurantList = restaurantData?.data?.cards[2]?.data?.data?.cards;
-    setRestaurants(restaurantList);
-    setFilteredRestaurants(restaurantList);
+    searchCtx.setTotalRestaurants(restaurantList);
+    searchCtx.filterRestaurants(restaurantList);
+    searchCtx.setTotalCuisinesSearchOptions(restaurantList);
   };
+
+  console.log("SEARCH CONTEXT", searchCtx);
 
   const {
     isLoading,
@@ -30,19 +32,11 @@ const Body = () => {
     callForRestaurants();
   }, []);
 
-  const inputHandler = (e) => {
-    setInputValue(e.target.value);
-    console.log(inputValue);
-  };
+  // have to take a look
+  if (!searchCtx.filteredRestaurants) {
+    return <div className="loading">Loading......</div>;
+  }
 
-  const searchHandler = () => {
-    console.log("SEARCH HNDLER");
-    setIsSearchClikted(true);
-    console.log(restaurants);
-    const fiteredRestaurants = filterRestaurants(restaurants, inputValue);
-    setFilteredRestaurants(fiteredRestaurants);
-  };
-  console.log(restaurants);
   return (
     <div className=" bg-slate-700 ">
       {error ? (
@@ -51,20 +45,18 @@ const Body = () => {
         </div>
       ) : (
         <>
-          <Search
-            inputHandler={inputHandler}
-            value={inputValue}
-            searchHandler={searchHandler}
-          />
+          <Search />
+          <SearchOptions />
           <div className="flex flex-wrap justify-center  w-4/5 m-auto">
-            {!isSearchClicked && filteredRestaurants.length === 0 ? (
+            {!searchCtx.isSearchButtonClicked &&
+            searchCtx.filteredRestaurants.length === 0 ? (
               <div className="loading">Loading......</div>
             ) : (
               <>
-                {filteredRestaurants.length === 0 ? (
+                {searchCtx.filteredRestaurants.length === 0 ? (
                   <div className="no-results">No restaurants was found</div>
                 ) : (
-                  filteredRestaurants.map((restaurant) => {
+                  searchCtx.filteredRestaurants.map((restaurant) => {
                     return (
                       <Link
                         key={restaurant.data.id}
