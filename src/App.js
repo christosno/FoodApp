@@ -12,6 +12,7 @@ import LoginForm from "./components/LoginForm";
 import UserAuthProvider from "./store/user-auth";
 import CartContextProvider from "./store/cart";
 import CartModal from "./components/CartModal";
+import SearchProvider from "./store/search-ctx";
 
 const AppLayoit = () => {
   const [isModalOn, setIsModalOn] = useState(false);
@@ -67,9 +68,11 @@ const router = createBrowserRouter([
 const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
 root.render(
-  <UserAuthProvider>
-    <CartContextProvider>
-      <RouterProvider router={router} />
-    </CartContextProvider>
-  </UserAuthProvider>
+  <SearchProvider>
+    <UserAuthProvider>
+      <CartContextProvider>
+        <RouterProvider router={router} />
+      </CartContextProvider>
+    </UserAuthProvider>
+  </SearchProvider>
 );

@@ -38,6 +38,7 @@ const Body = () => {
   const searchHandler = () => {
     console.log("SEARCH HNDLER");
     setIsSearchClikted(true);
+    console.log(restaurants);
     const fiteredRestaurants = filterRestaurants(restaurants, inputValue);
     setFilteredRestaurants(fiteredRestaurants);
   };
