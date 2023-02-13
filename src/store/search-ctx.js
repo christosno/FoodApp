@@ -1,7 +1,8 @@
 import { useReducer, createContext } from "react";
 import {
   filterRestaurantsFunc,
-  totalSearchOptions,
+  searchNameOptions,
+  cuisinesTotalSearchOptions,
   searchCuisinesOptions,
 } from "../utils/filterReataurnats";
 
@@ -34,13 +35,15 @@ const defaultSearchState = {
 
 const searchReducer = (state, action) => {
   if (action.type === "SEARCH_BY") {
-    updatedState = { ...state, searchBy: action.input };
+    updatedState = { ...state, searchBy: action.input, searchOptions: [] };
 
     return updatedState;
   }
 
   if (action.type === "TOTAL_CUISINES_SEARCH_OPTIONS") {
-    const updatedTotalCuisinesSearchOptions = totalSearchOptions(action.input);
+    const updatedTotalCuisinesSearchOptions = cuisinesTotalSearchOptions(
+      action.input
+    );
 
     const updatedState = {
       ...state,
@@ -54,6 +57,10 @@ const searchReducer = (state, action) => {
     let updatedSearchOptions = [];
 
     if (state.searchBy === "name") {
+      updatedSearchOptions = searchNameOptions(
+        state.totalRestaurants,
+        action.input
+      );
     }
 
     if (state.searchBy === "cusine" && action.input) {
