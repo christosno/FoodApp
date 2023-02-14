@@ -39,12 +39,15 @@ export const cuisinesTotalSearchOptions = (restaurantList) => {
 };
 
 export const searchCuisinesOptions = (totalSearchOptions, searchInput) => {
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!IN SEARCH CUISINES OPTIONS");
   return totalSearchOptions.filter((searchOption) => {
     return searchOption.toUpperCase().startsWith(searchInput.toUpperCase());
   });
 };
 
 export const searchNameOptions = (restaurantList, searchInput) => {
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!IN SEARCH Name OPTIONS");
+
   if (!searchInput) {
     return [];
   }

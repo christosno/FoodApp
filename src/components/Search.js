@@ -4,25 +4,29 @@ import RadioInput from "./RadioInput";
 import { SearchContext } from "../store/search-ctx";
 
 const Search = () => {
-  const [inputValue, setInputValue] = useState("");
+  // const [inputValue, setInputValue] = useState("");
   const searchCtx = useContext(SearchContext);
 
   const searchHandler = () => {};
-
+  console.log(
+    "-------------ON SEARCH------------- inputvalue",
+    searchCtx.inputValue
+  );
   const inputHandler = (e) => {
     console.log(e.target.value);
-    setInputValue(e.target.value);
+    searchCtx.setInputValue(e.target.value);
   };
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      searchCtx.setSearchOptions(inputValue);
+      console.log("-------------ON SETTIMOUT-------------");
+      searchCtx.setSearchOptions(searchCtx.inputValue);
     }, 300);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [inputValue]);
+  }, [searchCtx.inputValue]);
 
   console.log("Search Component");
   return (
@@ -32,7 +36,7 @@ const Search = () => {
         <input
           type="text"
           placeholder="Search"
-          value={inputValue}
+          value={searchCtx.inputValue}
           onChange={inputHandler}
           className="bg-white focus:outline-none focus:shadow-outline-blue border border-gray-300 rounded py-2 pr-4 pl-8 block w-full appearance-none leading-normal"
         />
