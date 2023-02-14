@@ -9,11 +9,10 @@ import { SearchContext } from "../store/search-ctx";
 import SearchOptions from "./SearchOptions";
 
 const Body = () => {
-  console.log("Body Component");
-
   const searchCtx = useContext(SearchContext);
 
   const applyData = (restaurantData) => {
+    console.log("IN APPLY DATA______________________________");
     const restaurantList = restaurantData?.data?.cards[2]?.data?.data?.cards;
     searchCtx.setTotalRestaurants(restaurantList);
     searchCtx.filterRestaurants(restaurantList, true);

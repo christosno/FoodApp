@@ -13,7 +13,6 @@ const Search = () => {
     searchCtx.inputValue
   );
   const inputHandler = (e) => {
-    console.log(e.target.value);
     searchCtx.setInputValue(e.target.value);
   };
 

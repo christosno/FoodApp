@@ -11,8 +11,8 @@ const SearchOptions = () => {
       false,
       searchOption
     );
-    searchCtx.setSearchOptions(searchCtx.totalRestaurants, true);
-    // searchCtx.setInputValue(searchOption);
+    searchCtx.setInputValue(searchOption);
+    searchCtx.clearOptions();
   };
 
   return (

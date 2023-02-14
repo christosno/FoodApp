@@ -14,6 +14,7 @@ export const SearchContext = createContext({
   inputValue: "",
   isSearchButtonClicked: false,
   totalRestaurants: [],
+  isClearedOptions: false,
   setTotalRestaurants: () => {},
   setTotalCuisinesSearchOptions: () => {},
   setInputValue: () => {},
@@ -21,6 +22,7 @@ export const SearchContext = createContext({
   setSearchBy: (input) => {},
   setSearchOptions: (searchBy) => {},
   filterRestaurants: () => {},
+  clearOptions: () => {},
 });
 
 const defaultSearchState = {
@@ -31,6 +33,7 @@ const defaultSearchState = {
   isSearchButtonClicked: false,
   totalRestaurants: [],
   inputValue: "",
+  isClearedOptions: false,
 };
 
 const searchReducer = (state, action) => {
@@ -63,10 +66,11 @@ const searchReducer = (state, action) => {
     let updatedSearchOptions = [];
     let updatedState;
 
-    if (action.clear) {
+    if (state.isClearedOptions) {
       updatedState = {
         ...state,
         searchOptions: updatedSearchOptions,
+        isClearedOptions: false,
       };
     } else {
       if (state.searchBy === "name") {
@@ -122,6 +126,12 @@ const searchReducer = (state, action) => {
     return updatedState;
   }
 
+  if (action.type === "CLEAR_SEARCH_OPTIONS") {
+    const updatedState = { ...state, isClearedOptions: true };
+
+    return updatedState;
+  }
+
   return defaultSearchState;
 };
 
@@ -145,11 +155,10 @@ const SearchProvider = ({ children }) => {
     setIsSearchButtonClicked: () => {},
     setSearchBy: (input) =>
       dispachSearchState({ type: "SEARCH_BY", input: input }),
-    setSearchOptions: (input, clear = false) => {
+    setSearchOptions: (input) => {
       dispachSearchState({
         type: "SEARCH_OPTIONS",
         input: input,
-        clear: clear,
       });
     },
     setTotalCuisinesSearchOptions: (input) => {
@@ -168,6 +177,9 @@ const SearchProvider = ({ children }) => {
     },
     setInputValue: (input) => {
       dispachSearchState({ type: "INPUT_VALUE", input: input });
+    },
+    clearOptions: () => {
+      dispachSearchState({ type: "CLEAR_SEARCH_OPTIONS" });
     },
   };
 
