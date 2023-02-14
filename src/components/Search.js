@@ -17,7 +17,7 @@ const Search = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       searchCtx.setSearchOptions(inputValue);
-    }, 500);
+    }, 300);
 
     return () => {
       clearTimeout(timer);

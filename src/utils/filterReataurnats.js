@@ -1,8 +1,28 @@
-export const filterRestaurantsFunc = (totalRestaurants, filterValue) => {
+export const filterRestaurantsFunc = (
+  totalRestaurants,
+  filterValue,
+  searchBy
+) => {
+  if (searchBy === "name") {
+    const fiteredRestaurants = totalRestaurants.filter((res) => {
+      return res.data.name === filterValue;
+    });
+    return fiteredRestaurants;
+  }
+
+  if (searchBy === "cusine") {
+    const fiteredRestaurants = totalRestaurants.filter((res) => {
+      return res.data.cuisines.some((cuisine) => {
+        return cuisine === filterValue;
+      });
+    });
+    return fiteredRestaurants;
+  }
   return totalRestaurants;
 };
 
 export const cuisinesTotalSearchOptions = (restaurantList) => {
+  // fix cusines name with more than one word like "mplampla mplampla"
   if (!restaurantList || restaurantList.length === 0) {
     return [];
   }

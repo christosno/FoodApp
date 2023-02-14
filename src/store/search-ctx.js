@@ -10,14 +10,12 @@ export const SearchContext = createContext({
   totalCuisinesSearchOptions: [],
   filteredRestaurants: [],
   searchOptions: [],
-  filterValue: "",
   searchBy: "",
   isSearchButtonClicked: false,
   totalRestaurants: [],
   setTotalRestaurants: () => {},
   setTotalCuisinesSearchOptions: () => {},
   setIsSearchButtonClicked: () => {},
-  setFilterValue: () => {},
   setSearchBy: (input) => {},
   setSearchOptions: (searchBy) => {},
   filterRestaurants: () => {},
@@ -27,7 +25,6 @@ const defaultSearchState = {
   filteredRestaurants: [],
   totalCuisinesSearchOptions: [],
   searchOptions: [],
-  filterValue: "",
   searchBy: "name",
   isSearchButtonClicked: false,
   totalRestaurants: [],
@@ -77,20 +74,27 @@ const searchReducer = (state, action) => {
   }
 
   if (action.type === "TOTAL_RESTAURANTS") {
-    const updatedSate = { ...state, totalRestaurants: action.input };
+    const updatedState = { ...state, totalRestaurants: action.input };
 
-    return updatedSate;
+    return updatedState;
   }
 
   if (action.type === "FILTERED_RESTAURANTS") {
-    const updatedFilteredRestaurants = filterRestaurantsFunc(
-      state.totalRestaurants,
-      state.filterValue
-    );
-    const updatedState = {
-      ...state,
-      filteredRestaurants: updatedFilteredRestaurants,
-    };
+    let updatedState;
+
+    if (action.firstTime) {
+      updatedState = { ...state, filteredRestaurants: action.input };
+    } else {
+      const updatedFilteredRestaurants = filterRestaurantsFunc(
+        state.totalRestaurants,
+        action.filterValue,
+        state.searchBy
+      );
+      updatedState = {
+        ...state,
+        filteredRestaurants: updatedFilteredRestaurants,
+      };
+    }
 
     return updatedState;
   }
@@ -108,7 +112,6 @@ const SearchProvider = ({ children }) => {
     filteredRestaurants: searchState.filteredRestaurants,
     searchBy: searchState.searchBy,
     searchOptions: searchState.searchOptions,
-    filterValue: searchState.filterValue,
     isSearchButtonClicked: searchState.isSearchButtonClicked,
     totalRestaurants: searchState.totalRestaurants,
     totalCuisinesSearchOptions: searchState.totalCuisinesSearchOptions,
@@ -118,8 +121,12 @@ const SearchProvider = ({ children }) => {
     setIsSearchButtonClicked: () => {},
     setSearchBy: (input) =>
       dispachSearchState({ type: "SEARCH_BY", input: input }),
-    setSearchOptions: (input) => {
-      dispachSearchState({ type: "SEARCH_OPTIONS", input: input });
+    setSearchOptions: (input, clear) => {
+      dispachSearchState({
+        type: "SEARCH_OPTIONS",
+        input: input,
+        clear: clear,
+      });
     },
     setTotalCuisinesSearchOptions: (input) => {
       dispachSearchState({
@@ -127,9 +134,13 @@ const SearchProvider = ({ children }) => {
         input: input,
       });
     },
-    setFilterValue: () => {},
-    filterRestaurants: (input) => {
-      dispachSearchState({ type: "FILTERED_RESTAURANTS", input: input });
+    filterRestaurants: (input, firstTime, filterValue = "") => {
+      dispachSearchState({
+        type: "FILTERED_RESTAURANTS",
+        input: input,
+        firstTime: firstTime,
+        filterValue: filterValue,
+      });
     },
   };
 

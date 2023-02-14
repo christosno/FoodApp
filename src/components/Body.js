@@ -16,7 +16,7 @@ const Body = () => {
   const applyData = (restaurantData) => {
     const restaurantList = restaurantData?.data?.cards[2]?.data?.data?.cards;
     searchCtx.setTotalRestaurants(restaurantList);
-    searchCtx.filterRestaurants(restaurantList);
+    searchCtx.filterRestaurants(restaurantList, true);
     searchCtx.setTotalCuisinesSearchOptions(restaurantList);
   };
 
