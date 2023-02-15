@@ -15,7 +15,7 @@ const Body = () => {
     console.log("IN APPLY DATA______________________________");
     const restaurantList = restaurantData?.data?.cards[2]?.data?.data?.cards;
     searchCtx.setTotalRestaurants(restaurantList);
-    searchCtx.filterRestaurants(restaurantList, true);
+    searchCtx.filterRestaurants(restaurantList, false);
     searchCtx.setTotalCuisinesSearchOptions(restaurantList);
   };
 
@@ -28,6 +28,14 @@ const Body = () => {
   } = useFetch({ url: API_CALL }, applyData);
 
   useEffect(() => {
+    if (
+      searchCtx.filteredRestaurants &&
+      searchCtx.filteredRestaurants.length > 0
+    ) {
+      console.log("USEEFFECT / USE THE EXISTING DATA");
+      return searchCtx.filterRestaurants(searchCtx.filteredRestaurants, false);
+    }
+
     callForRestaurants();
   }, []);
 

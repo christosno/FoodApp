@@ -103,7 +103,7 @@ const searchReducer = (state, action) => {
   if (action.type === "FILTERED_RESTAURANTS") {
     let updatedState;
 
-    if (action.firstTime) {
+    if (!action.doFilterDAta) {
       updatedState = { ...state, filteredRestaurants: action.input };
     } else {
       const updatedFilteredRestaurants = filterRestaurantsFunc(
@@ -167,11 +167,11 @@ const SearchProvider = ({ children }) => {
         input: input,
       });
     },
-    filterRestaurants: (input, firstTime, filterValue = "") => {
+    filterRestaurants: (input, doFilterDAta, filterValue = "") => {
       dispachSearchState({
         type: "FILTERED_RESTAURANTS",
         input: input,
-        firstTime: firstTime,
+        doFilterDAta: doFilterDAta,
         filterValue: filterValue,
       });
     },

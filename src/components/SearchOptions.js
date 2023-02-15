@@ -6,11 +6,7 @@ const SearchOptions = () => {
   const options = searchCtx.searchOptions;
 
   const clickHandler = (searchOption) => {
-    searchCtx.filterRestaurants(
-      searchCtx.totalRestaurants,
-      false,
-      searchOption
-    );
+    searchCtx.filterRestaurants(searchCtx.totalRestaurants, true, searchOption);
     searchCtx.setInputValue(searchOption);
     searchCtx.clearOptions();
   };
