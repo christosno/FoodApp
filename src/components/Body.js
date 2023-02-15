@@ -6,7 +6,6 @@ import ErrorComp from "./ErrorComp";
 import useFetch from "../utils/useFetch";
 import Search from "./Search";
 import { SearchContext } from "../store/search-ctx";
-import SearchOptions from "./SearchOptions";
 
 const Body = () => {
   const searchCtx = useContext(SearchContext);
@@ -47,7 +46,6 @@ const Body = () => {
       ) : (
         <>
           <Search />
-          <SearchOptions />
           <div className="flex flex-wrap justify-center  w-4/5 m-auto">
             {!searchCtx.isSearchButtonClicked &&
             searchCtx.filteredRestaurants.length === 0 ? (

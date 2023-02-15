@@ -15,6 +15,7 @@ export const SearchContext = createContext({
   isSearchButtonClicked: false,
   totalRestaurants: [],
   isClearedOptions: false,
+  isOptionsVisible: true,
   setTotalRestaurants: () => {},
   setTotalCuisinesSearchOptions: () => {},
   setInputValue: () => {},
@@ -23,6 +24,7 @@ export const SearchContext = createContext({
   setSearchOptions: (searchBy) => {},
   filterRestaurants: () => {},
   clearOptions: () => {},
+  setIsOptionsVisible: () => {},
 });
 
 const defaultSearchState = {
@@ -34,6 +36,7 @@ const defaultSearchState = {
   totalRestaurants: [],
   inputValue: "",
   isClearedOptions: false,
+  isOptionsVisible: true,
 };
 
 const searchReducer = (state, action) => {
@@ -132,6 +135,12 @@ const searchReducer = (state, action) => {
     return updatedState;
   }
 
+  if (action.type === "IS_OPTIONS_VISIBLE") {
+    const updatedState = { ...state, isOptionsVisible: action.input };
+
+    return updatedState;
+  }
+
   return defaultSearchState;
 };
 
@@ -149,6 +158,7 @@ const SearchProvider = ({ children }) => {
     totalRestaurants: searchState.totalRestaurants,
     totalCuisinesSearchOptions: searchState.totalCuisinesSearchOptions,
     inputValue: searchState.inputValue,
+    isOptionsVisible: searchState.isOptionsVisible,
     setTotalRestaurants: (input) => {
       dispachSearchState({ type: "TOTAL_RESTAURANTS", input: input });
     },
@@ -180,6 +190,9 @@ const SearchProvider = ({ children }) => {
     },
     clearOptions: () => {
       dispachSearchState({ type: "CLEAR_SEARCH_OPTIONS" });
+    },
+    setIsOptionsVisible: (input) => {
+      dispachSearchState({ type: "IS_OPTIONS_VISIBLE", input: input });
     },
   };
 
