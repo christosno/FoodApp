@@ -28,21 +28,15 @@ const Body = () => {
   } = useFetch({ url: API_CALL }, applyData);
 
   useEffect(() => {
-    if (
-      searchCtx.filteredRestaurants &&
-      searchCtx.filteredRestaurants.length > 0
-    ) {
+    if (searchCtx.totalRestaurants && searchCtx.totalRestaurants.length > 0) {
       console.log("USEEFFECT / USE THE EXISTING DATA");
-      return searchCtx.filterRestaurants(searchCtx.filteredRestaurants, false);
+      searchCtx.filterRestaurants(searchCtx.totalRestaurants, false);
+      searchCtx.setInputValue("");
+      return;
     }
 
     callForRestaurants();
   }, []);
-
-  // have to take a look
-  if (!searchCtx.filteredRestaurants) {
-    return <div className="loading">Loading......</div>;
-  }
 
   return (
     <div className=" bg-slate-700 ">
