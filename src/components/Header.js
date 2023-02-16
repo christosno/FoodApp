@@ -58,8 +58,8 @@ const Header = ({ onOpenModal }) => {
 
           {isLogedIn ? (
             <>
-              <h5 className="lg:ml-8 text-xs lg:my-0 my-7 text-gray-800">
-                {`${userName.firstName} ${userName.lastName}`}
+              <h5 className="lg:ml-8 text-s lg:my-0 my-7 font-[Poppins] text-gray-200">
+                {`${userName.firstName[0].toLowerCase()}.${userName.lastName.toLowerCase()}`}
               </h5>
               <Link to={"/"}>
                 <Button
