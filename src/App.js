@@ -8,7 +8,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./pages/RestaurantMenu";
-import LoginForm from "./pages/LoginForm";
+import Authentication, { action as loginAction } from "./pages/Authentication";
 import UserAuthProvider from "./store/user-auth";
 import CartContextProvider from "./store/cart";
 import CartModal from "./components/cart/CartModal";
@@ -42,24 +42,25 @@ const router = createBrowserRouter([
     errorElement: <ErrorComp message={"Sorry we could not load the page"} />,
     children: [
       {
-        path: "/",
+        path: "",
         element: <Body />,
       },
       {
-        path: "/about",
+        path: "about",
         element: <About />,
       },
       {
-        path: "/contact",
+        path: "contact",
         element: <Contact />,
       },
       {
-        path: "/restaurant/:id",
+        path: "restaurant/:id",
         element: <RestaurantMenu />,
       },
       {
-        path: "/login",
-        element: <LoginForm />,
+        path: "auth",
+        element: <Authentication />,
+        action: loginAction,
       },
     ],
   },

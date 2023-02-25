@@ -42,13 +42,13 @@ const Header = ({ onOpenModal }) => {
           } lg:opacity-100`}
         >
           <li className="text-white lg:ml-8 text-xl lg:my-0 my-7 font-[Poppins]  hover:text-gray-400 duration-500">
-            <Link to={"/"}>Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li className="text-white lg:ml-8 text-xl lg:my-0 my-7 font-[Poppins]  hover:text-gray-400 duration-500">
-            <Link to={"/about"}>About Us</Link>
+            <Link to="/about">About Us</Link>
           </li>
           <li className="text-white lg:ml-8 text-xl lg:my-0 my-7 font-[Poppins]  hover:text-gray-400 duration-500">
-            <Link to={"/contact"}>Contact</Link>
+            <Link to="/contact">Contact</Link>
           </li>
           <li className="lg:ml-8 text-xl lg:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500">
             <Link>
@@ -58,10 +58,7 @@ const Header = ({ onOpenModal }) => {
 
           {isLogedIn ? (
             <>
-              <h5 className="lg:ml-8 text-s lg:my-0 my-7 font-[Poppins] text-gray-200">
-                {`${userName.firstName[0].toLowerCase()}.${userName.lastName.toLowerCase()}`}
-              </h5>
-              <Link to={"/"}>
+              <Link to="/">
                 <Button
                   bgColor="bg-slate-900"
                   bgHoverColor="bg-slate-800"
@@ -75,7 +72,7 @@ const Header = ({ onOpenModal }) => {
               </Link>
             </>
           ) : (
-            <Link to={"/login"}>
+            <Link to="/auth?mode=login">
               <Button
                 bgColor="bg-slate-900"
                 bgHoverColor="bg-slate-800"
