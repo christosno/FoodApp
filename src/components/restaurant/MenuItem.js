@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import { IMG_URL_MENU_ITEM } from "../constants";
-import Button from "./Button";
-import { CartContexrt } from "../store/cart";
+import { IMG_URL_MENU_ITEM } from "../../constants";
+import Button from "../UI/Button";
+import { CartContexrt } from "../../store/cart";
 import MenuItemForm from "./MenuItemForm";
 
 // id, name, price, cloudinaryImageId, description

@@ -1,10 +1,10 @@
 import { useEffect, useContext } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard from "../components/restaurant/RestaurantCard";
 import { API_CALL } from "../constants";
 import { Link } from "react-router-dom";
-import ErrorComp from "./ErrorComp";
+import ErrorComp from "../components/errors/ErrorComp";
 import useFetch from "../utils/useFetch";
-import Search from "./Search";
+import Search from "../components/search/Search";
 import { SearchContext } from "../store/search-ctx";
 
 const Body = () => {

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
-import Button from "./Button";
+import Button from "../components/UI/Button";
 import { UserLoginContext } from "../store/user-auth";
 import { validate } from "../utils/loginValidation";
 

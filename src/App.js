@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
-import Header from "./components/Header";
-import Body from "./components/Body";
-import Footer from "./components/Footer";
-import ErrorComp from "./components/ErrorComp";
-import About from "./components/About";
-import Contact from "./components/Contact";
+import Header from "./components/header/Header";
+import Body from "./pages/Body";
+import Footer from "./components/footer/Footer";
+import ErrorComp from "./components/errors/ErrorComp";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import RestaurantMenu from "./components/RestaurantMenu";
-import LoginForm from "./components/LoginForm";
+import RestaurantMenu from "./pages/RestaurantMenu";
+import LoginForm from "./pages/LoginForm";
 import UserAuthProvider from "./store/user-auth";
 import CartContextProvider from "./store/cart";
-import CartModal from "./components/CartModal";
+import CartModal from "./components/cart/CartModal";
 import SearchProvider from "./store/search-ctx";
 
-const AppLayoit = () => {
+const AppLayout = () => {
   const [isModalOn, setIsModalOn] = useState(false);
 
   const openCardModalHandler = () => {
@@ -38,7 +38,7 @@ const AppLayoit = () => {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayoit />,
+    element: <AppLayout />,
     errorElement: <ErrorComp message={"Sorry we could not load the page"} />,
     children: [
       {

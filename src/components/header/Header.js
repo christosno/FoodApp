@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import Button from "./Button";
+import Button from "../UI/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
-import { UserLoginContext } from "../store/user-auth";
-import { CartContexrt } from "../store/cart";
+import { UserLoginContext } from "../../store/user-auth";
+import { CartContexrt } from "../../store/cart";
 import HeaderCardButton from "./HeaderCardButton";
 
 const Header = ({ onOpenModal }) => {

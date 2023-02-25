@@ -1,5 +1,5 @@
-import { IMG_CDN_URL } from "../constants";
-import RatingStars from "./RatingStars";
+import { IMG_CDN_URL } from "../../constants";
+import RatingStars from "../UI/RatingStars";
 
 const RestaurantCard = ({
   name,

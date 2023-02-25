@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { API_MENU_CALL, IMG_CDN_URL } from "../constants";
 import { useParams } from "react-router-dom";
-import ErrorComp from "./ErrorComp";
-import MenuMainCategory from "./MenuMainCategory";
+import ErrorComp from "../components/errors/ErrorComp";
+import MenuMainCategory from "../components/restaurant/MenuMainCategory";
 import useFetch from "../utils/useFetch";
-import RatingStars from "./RatingStars";
+import RatingStars from "../components/UI/RatingStars";
 
 const RestaurantMenu = () => {
   console.log("RestaurantMenu Component");

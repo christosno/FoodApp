@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { SearchContext } from "../store/search-ctx";
+import { SearchContext } from "../../store/search-ctx";
 
 const SearchOptions = () => {
   const searchCtx = useContext(SearchContext);

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import Button from "./Button";
+import Button from "../UI/Button";
 import RadioInput from "./RadioInput";
-import { SearchContext } from "../store/search-ctx";
+import { SearchContext } from "../../store/search-ctx";
 import SearchOptions from "./SearchOptions";
 
 const Search = () => {

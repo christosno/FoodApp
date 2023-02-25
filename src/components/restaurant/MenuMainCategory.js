@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MenuCategory from "./MenuCategory";
 import MenuItem from "./MenuItem";
-import { filterMenuItems } from "../utils/filterMenuItems";
+import { filterMenuItems } from "../../utils/filterMenuItems";
 
 const MenuMainCategory = ({ item, totalItems }) => {
   console.log("MenuMainCategory Component");
