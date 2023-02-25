@@ -11,6 +11,11 @@ import {
 import Button from "../components/UI/Button";
 import { UserLoginContext } from "../store/user-auth";
 import { validate } from "../utils/loginValidation";
+import { auth } from "../firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const Authentication = () => {
   console.log("LoginForm Component");
@@ -126,11 +131,32 @@ export const action = async ({ request }) => {
   };
 
   if (mode === "login") {
-    // firebase login
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        authData.email,
+        authData.password
+      );
+      console.log("log in new user");
+      console.log(userCredential.user);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   if (mode === "signup") {
-    /// firebase signup
+    console.log("SIGN UP !!!!!!!!!!!!!!!");
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        authData.email,
+        authData.password
+      );
+      console.log("added new user");
+      console.log(userCredential.user);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return redirect("/");
