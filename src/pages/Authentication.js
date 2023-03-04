@@ -9,17 +9,18 @@ import {
   redirect,
 } from "react-router-dom";
 import Button from "../components/UI/Button";
-import { UserLoginContext } from "../store/user-auth";
+// import { UserLoginContext } from "../store/user-auth";
 import { validate } from "../utils/loginValidation";
 import { auth } from "../firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 
 const Authentication = () => {
   console.log("LoginForm Component");
-  const { setIsLogedIn } = useContext(UserLoginContext);
+  // const { setIsLogedIn } = useContext(UserLoginContext);
   const [searchParams] = useSearchParams();
   const submit = useSubmit();
 
@@ -31,9 +32,14 @@ const Authentication = () => {
     initialValues: {
       email: "",
       password: "",
+      username: "",
     },
     onSubmit: (values) => {
-      const data = { email: values.email, password: values.password };
+      const data = {
+        email: values.email,
+        password: values.password,
+        username: values.username,
+      };
       // console.log("data -------", data);
       submit(data, { method: "post" });
       // setIsLogedIn(true);
@@ -50,6 +56,29 @@ const Authentication = () => {
       <h1 className="my-3 text-white text-xl font-[Poppins] font-bold">
         {isLogin ? "User Log in" : "Create an Account"}
       </h1>
+      {!isLogin && (
+        <div className="mb-4">
+          <label
+            htmlFor="userName"
+            className="block font-[Poppins] text-white font-bold mb-2"
+          >
+            User Name
+          </label>
+          <input
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            type="text"
+            id="username"
+            name="username"
+            className="border rounded border-gray-400 p-2 w-full"
+          />
+          {formik.errors.username && formik.touched.username ? (
+            <div className="text-red-500 font-bold mt-2">
+              {formik.errors.username}
+            </div>
+          ) : null}
+        </div>
+      )}
       <div className="mb-4">
         <label
           htmlFor="email"
@@ -128,6 +157,7 @@ export const action = async ({ request }) => {
   const authData = {
     email: data.get("email"),
     password: data.get("password"),
+    username: data.get("username") || null,
   };
 
   if (mode === "login") {
@@ -146,13 +176,21 @@ export const action = async ({ request }) => {
 
   if (mode === "signup") {
     console.log("SIGN UP !!!!!!!!!!!!!!!");
+    console.log(authData);
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         authData.email,
         authData.password
       );
+
+      const user = userCredential.user;
+
+      updateProfile(auth.currentUser, {
+        displayName: authData.username,
+      });
       console.log("added new user");
+      console.log(auth.currentUser);
       console.log(userCredential.user);
     } catch (err) {
       console.log(err);

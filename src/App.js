@@ -13,6 +13,8 @@ import UserAuthProvider from "./store/user-auth";
 import CartContextProvider from "./store/cart";
 import CartModal from "./components/cart/CartModal";
 import SearchProvider from "./store/search-ctx";
+import { action as logoutAction } from "./pages/Logout";
+import { loader as currUserLoader } from "./utils/auth-util";
 
 const AppLayout = () => {
   const [isModalOn, setIsModalOn] = useState(false);
@@ -40,6 +42,8 @@ const router = createBrowserRouter([
     path: "/",
     element: <AppLayout />,
     errorElement: <ErrorComp message={"Sorry we could not load the page"} />,
+    id: "root",
+    loader: currUserLoader,
     children: [
       {
         path: "",
@@ -61,6 +65,10 @@ const router = createBrowserRouter([
         path: "auth",
         element: <Authentication />,
         action: loginAction,
+      },
+      {
+        path: "logout",
+        action: logoutAction,
       },
     ],
   },

@@ -8,6 +8,7 @@ export const validate = (values) => {
   }
 
   // add validation for password
+  // add validation for username
 
   return errors;
 };

@@ -1,20 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, Form, useRouteLoaderData } from "react-router-dom";
 import Button from "../UI/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
-import { UserLoginContext } from "../../store/user-auth";
 import { CartContexrt } from "../../store/cart";
 import HeaderCardButton from "./HeaderCardButton";
 
 const Header = ({ onOpenModal }) => {
-  console.log("Header Component");
   const [navIsOpen, setNavIsOpen] = useState(false);
-  const { userName, isLogedIn, setIsLogedIn } = useContext(UserLoginContext);
   const { items, totalAmount } = useContext(CartContexrt);
 
-  console.log("Header Items", items);
-  console.log("Header totalAmount", totalAmount);
+  const user = useRouteLoaderData("root");
+  const userName = user ? user.displayName : null;
+  console.log(userName);
 
   const numItems = items.reduce((curVal, item) => {
     return curVal + item.amount;
@@ -50,26 +48,30 @@ const Header = ({ onOpenModal }) => {
           <li className="text-white lg:ml-8 text-xl lg:my-0 my-7 font-[Poppins]  hover:text-gray-400 duration-500">
             <Link to="/contact">Contact</Link>
           </li>
+
           <li className="lg:ml-8 text-xl lg:my-0 my-7 text-gray-800 hover:text-gray-200 duration-500">
             <Link>
               <HeaderCardButton numItems={numItems} onOpenModal={onOpenModal} />
             </Link>
           </li>
-
-          {isLogedIn ? (
+          {user && (
+            <li className="text-white lg:ml-8 lg:my-0 my-7 font-[Poppins]">
+              Hi {userName}!!
+            </li>
+          )}
+          {user ? (
             <>
-              <Link to="/">
-                <Button
-                  bgColor="bg-slate-900"
-                  bgHoverColor="bg-slate-800"
-                  margin="ml-8 mr-2"
-                  clickHandler={() => {
-                    setIsLogedIn(false);
-                  }}
-                >
-                  Logout
-                </Button>
-              </Link>
+              <li>
+                <Form action="/logout" method="post">
+                  <Button
+                    bgColor="bg-slate-900"
+                    bgHoverColor="bg-slate-800"
+                    margin="ml-8 mr-2"
+                  >
+                    Logout
+                  </Button>
+                </Form>
+              </li>
             </>
           ) : (
             <Link to="/auth?mode=login">
