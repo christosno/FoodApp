@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useFormik } from "formik";
 import {
-  useNavigate,
+  useNavigation,
   Link,
   useSearchParams,
   useSubmit,
@@ -20,7 +20,10 @@ import {
 
 const Authentication = () => {
   const [searchParams] = useSearchParams();
+  const navigation = useNavigation();
   const submit = useSubmit();
+
+  const isSubmiting = navigation.state === "submitting";
 
   const isLogin = searchParams.get("mode") === "login";
 
@@ -44,7 +47,7 @@ const Authentication = () => {
   return (
     <Form
       onSubmit={formik.handleSubmit}
-      className="w-1/2 p-4 mx-auto mt-28 bg-slate-700 rounded shadow-xl"
+      className="w-full md:w-1/2 p-4 mx-auto mt-28 bg-slate-700 rounded shadow-xl"
     >
       <h1 className="my-3 text-white text-xl font-[Poppins] font-bold">
         {isLogin ? "User Log in" : "Create an Account"}
@@ -119,22 +122,24 @@ const Authentication = () => {
         bgColor="bg-slate-900"
         bgHoverColor="bg-slate-800"
         margin="ml-0"
+        disabled={isSubmiting}
       >
-        {isLogin ? "Log In" : "Sign Up"}
+        {isSubmiting ? "Submiting ..." : isLogin ? "Log In" : "Sign Up"}
       </Button>
       {isLogin ? (
-        <Link to="?mode=signup" className="flex">
-          You don't have account?
-          <p className="text-slate-200 ml-3 cursor-pointer">
-            {" "}
-            Create an acount
-          </p>
-        </Link>
+        <div className="m-2 flex">
+          <p className=" text-slate-400">You don't have account?</p>
+          <Link to="/auth?mode=signup">
+            <p className="text-slate-200 ml-3 cursor-pointer">Sign up</p>
+          </Link>
+        </div>
       ) : (
-        <Link to="?mode=login" className="flex">
-          Do you have an account{" "}
-          <p className="text-slate-200 ml-3 cursor-pointer">Log in</p>
-        </Link>
+        <div className="m-2 flex">
+          <p className=" text-slate-400">Do you have account?</p>
+          <Link to="/auth?mode=login">
+            <p className="text-slate-200 ml-3 cursor-pointer">Log in</p>
+          </Link>
+        </div>
       )}
     </Form>
   );

@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import { CartContexrt } from "../../store/cart";
+import { UserLoginContext } from "../../store/user-auth";
 import CartModalItem from "./CartModalItem";
 import Modal from "./Modal";
+import { Link } from "react-router-dom";
 
 const CartModal = ({ onCloseModal }) => {
   const cartCtx = useContext(CartContexrt);
+  const { user } = useContext(UserLoginContext);
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
@@ -42,34 +45,33 @@ const CartModal = ({ onCloseModal }) => {
         <span>{totalAmount}</span>
       </div>
       <div className="text-right">
+        {!user && (
+          <div className="m-2 flex justify-end">
+            <Link to="/auth?mode=login">
+              <p
+                onClick={onCloseModal}
+                className="text-red-500 mr-3 cursor-pointer"
+              >
+                Log in
+              </p>
+            </Link>
+            <p className=" text-slate-400">to procced with the order</p>
+          </div>
+        )}
         <button
           onClick={onCloseModal}
           className="cursor-pointer bg-transparent border-solid border-2 border-red-900 rounded ml-4 py-2 px-8 bg-red-800 text-white hover:bg-red-900  active:bg-red-900 "
         >
           Close
         </button>
-        {hasItems && (
-          <button className="cursor-pointer bg-transparent border-solid border-2 border-slate-500 rounded ml-4 py-2 px-8 hover:bg-slate-500 hover:text-white active:bg-slate-500 active:text-white">
-            Order
-          </button>
-        )}
+
+        <button
+          disabled={user && hasItems}
+          className="cursor-pointer bg-transparent border-solid border-2 border-slate-500 rounded ml-4 py-2 px-8 hover:bg-slate-500 hover:text-white active:bg-slate-500 active:text-white"
+        >
+          Order
+        </button>
       </div>
-      {/* <h1 className="text-2xl font-medium">Cart Information</h1>
-      <div>
-        {!(order.length === 0) ? (
-          order.map((item) => {
-            return <CartModalItem {...item} />;
-          })
-        ) : (
-          <p className="mt-4">Your cart is empty</p>
-        )}
-      </div>
-      <button
-        onClick={onCloseModal}
-        className="mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Close
-      </button> */}
     </Modal>
   );
 };

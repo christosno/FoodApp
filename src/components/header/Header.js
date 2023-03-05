@@ -10,7 +10,7 @@ import { UserLoginContext } from "../../store/user-auth";
 const Header = ({ onOpenModal }) => {
   console.log("HEADER");
   const [navIsOpen, setNavIsOpen] = useState(false);
-  const { items, totalAmount } = useContext(CartContexrt);
+  const { items } = useContext(CartContexrt);
   const { user } = useContext(UserLoginContext);
 
   console.log(user);
