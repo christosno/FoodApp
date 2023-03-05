@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useFormik } from "formik";
 import {
   useNavigation,
@@ -7,6 +7,7 @@ import {
   useSubmit,
   Form,
   redirect,
+  useActionData,
 } from "react-router-dom";
 import Button from "../components/UI/Button";
 // import { UserLoginContext } from "../store/user-auth";
@@ -22,6 +23,16 @@ const Authentication = () => {
   const [searchParams] = useSearchParams();
   const navigation = useNavigation();
   const submit = useSubmit();
+
+  const validationError = useActionData();
+
+  const validationErrorMessage = validationError
+    ? validationError.code === "auth/user-not-found"
+      ? "User does not exists"
+      : "Wrong Password"
+    : null;
+
+  console.log(validationError?.code);
 
   const isSubmiting = navigation.state === "submitting";
 
@@ -52,6 +63,9 @@ const Authentication = () => {
       <h1 className="my-3 text-white text-xl font-[Poppins] font-bold">
         {isLogin ? "User Log in" : "Create an Account"}
       </h1>
+      {validationErrorMessage && (
+        <p className="text-red-500 font-bold m-2">{validationErrorMessage}</p>
+      )}
       {!isLogin && (
         <div className="mb-4">
           <label
@@ -166,7 +180,8 @@ export const action = async ({ request }) => {
         authData.password
       );
     } catch (err) {
-      console.log(err);
+      console.log("IM HERE");
+      return err;
     }
   }
 
@@ -184,7 +199,8 @@ export const action = async ({ request }) => {
         displayName: authData.username,
       });
     } catch (err) {
-      console.log(err);
+      console.log("IM HERE");
+      return err;
     }
   }
 
