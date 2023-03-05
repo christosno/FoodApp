@@ -4,7 +4,6 @@ import { SearchContext } from "../../store/search-ctx";
 const RadioInput = () => {
   const searchCtx = useContext(SearchContext);
 
-  console.log(searchCtx);
   return (
     <div className="flex m-1 rounded  w-10/12 md:w-2/4 lg:w-1/4 justify-center items-center">
       <h3 className="text-white mr-2">Search By</h3>

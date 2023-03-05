@@ -7,13 +7,11 @@ import useFetch from "../utils/useFetch";
 import RatingStars from "../components/UI/RatingStars";
 
 const RestaurantMenu = () => {
-  console.log("RestaurantMenu Component");
   const { id } = useParams();
   const [restaurantMenu, setRestaurantMenu] = useState(null);
 
   const applyData = (menuData) => {
     const finalMenuData = menuData?.data;
-    console.log(finalMenuData);
     setRestaurantMenu(finalMenuData);
   };
 

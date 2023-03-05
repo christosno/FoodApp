@@ -9,17 +9,12 @@ const Search = () => {
   const searchCtx = useContext(SearchContext);
 
   const searchHandler = () => {};
-  console.log(
-    "-------------ON SEARCH------------- inputvalue",
-    searchCtx.inputValue
-  );
   const inputHandler = (e) => {
     searchCtx.setInputValue(e.target.value);
   };
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log("-------------ON SETTIMOUT-------------");
       searchCtx.setSearchOptions(searchCtx.inputValue);
       searchCtx.setIsOptionsVisible(true);
     }, 300);
@@ -29,7 +24,6 @@ const Search = () => {
     };
   }, [searchCtx.inputValue]);
 
-  console.log("Search Component");
   return (
     <div className="relative">
       <div className="relative flex flex-col w-full pt-24 mb-1">

@@ -1,8 +1,6 @@
 import React from "react";
 
 const CartModalItem = ({ name, amount, price, onRemove, onAdd }) => {
-  console.log("CartModalItem Component");
-  console.log(price);
   const fixedPrice = `$${price.toFixed(2)}`;
   return (
     <li className="flex justify-between items-center border-solid border-2 border-slate-500 rounded p-4 my-4 mx-0">

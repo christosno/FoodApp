@@ -3,17 +3,16 @@ import MenuItem from "./MenuItem";
 import { filterMenuItems } from "../../utils/filterMenuItems";
 
 const MenuCategory = ({ totalItems, item }) => {
-  console.log("MenuCategory Component");
   const [menuItems, setMenuItems] = useState(null);
   const [isChildVisible, setIsChildVisible] = useState(false);
-  console.log(item);
+
   const MenuCategoryClickHandler = (item) => {
     setIsChildVisible(!isChildVisible);
-    console.log("clicked");
+
     if (item.entities) {
       const menuEntities = item.entities;
       const finalItems = filterMenuItems(totalItems, menuEntities);
-      console.log("finalItems", finalItems);
+
       setMenuItems(finalItems);
     }
   };

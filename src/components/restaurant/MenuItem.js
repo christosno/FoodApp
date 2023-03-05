@@ -7,12 +7,11 @@ import MenuItemForm from "./MenuItemForm";
 // id, name, price, cloudinaryImageId, description
 
 const MenuItem = ({ item }) => {
-  console.log("MenuItem Component");
   const { addItem, removeItem } = useContext(CartContexrt);
 
   const onAddToCartHandler = (amount) => {
     const newItem = { ...item, amount: amount };
-    console.log(newItem);
+
     addItem(newItem);
   };
 

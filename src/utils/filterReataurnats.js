@@ -23,7 +23,6 @@ export const filterRestaurantsFunc = (
 
 export const cuisinesTotalSearchOptions = (restaurantList) => {
   // fix cusines name with more than one word like "mplampla mplampla"
-  console.log("-------------SEARCH TOTAL CUISINE -----------------------");
   if (!restaurantList || restaurantList.length === 0) {
     return [];
   }
@@ -34,13 +33,10 @@ export const cuisinesTotalSearchOptions = (restaurantList) => {
     .reduce((accum, cur) => {
       return [...new Set([...accum, ...cur])];
     }, []);
-  console.log("IN FILTER SEARCH OPTIONS", totalSearchOptinos);
-
   return totalSearchOptinos;
 };
 
 export const searchCuisinesOptions = (totalSearchOptions, searchInput) => {
-  console.log("-------------SEARCH CUISINE -----------------------");
   return totalSearchOptions.filter((searchOption) => {
     return searchOption.toUpperCase().startsWith(searchInput.toUpperCase());
   });

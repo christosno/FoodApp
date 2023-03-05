@@ -19,14 +19,10 @@ import {
 } from "firebase/auth";
 
 const Authentication = () => {
-  console.log("LoginForm Component");
-  // const { setIsLogedIn } = useContext(UserLoginContext);
   const [searchParams] = useSearchParams();
   const submit = useSubmit();
 
   const isLogin = searchParams.get("mode") === "login";
-
-  // const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -40,10 +36,7 @@ const Authentication = () => {
         password: values.password,
         username: values.username,
       };
-      // console.log("data -------", data);
       submit(data, { method: "post" });
-      // setIsLogedIn(true);
-      // navigate("/");
     },
     validate,
   });
@@ -167,16 +160,12 @@ export const action = async ({ request }) => {
         authData.email,
         authData.password
       );
-      console.log("log in new user");
-      console.log(userCredential.user);
     } catch (err) {
       console.log(err);
     }
   }
 
   if (mode === "signup") {
-    console.log("SIGN UP !!!!!!!!!!!!!!!");
-    console.log(authData);
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -189,9 +178,6 @@ export const action = async ({ request }) => {
       updateProfile(auth.currentUser, {
         displayName: authData.username,
       });
-      console.log("added new user");
-      console.log(auth.currentUser);
-      console.log(userCredential.user);
     } catch (err) {
       console.log(err);
     }

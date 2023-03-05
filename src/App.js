@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/header/Header";
 import Body from "./pages/Body";
@@ -14,11 +14,26 @@ import CartContextProvider from "./store/cart";
 import CartModal from "./components/cart/CartModal";
 import SearchProvider from "./store/search-ctx";
 import { action as logoutAction } from "./pages/Logout";
-import { loader as currUserLoader } from "./utils/auth-util";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
+import { UserLoginContext } from "./store/user-auth";
 
 const AppLayout = () => {
   const [isModalOn, setIsModalOn] = useState(false);
 
+  const authCtx = useContext(UserLoginContext);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      authCtx.setUser(user);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  console.log("APPLAYOUT");
   const openCardModalHandler = () => {
     setIsModalOn(true);
   };
@@ -42,8 +57,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <AppLayout />,
     errorElement: <ErrorComp message={"Sorry we could not load the page"} />,
-    id: "root",
-    loader: currUserLoader,
     children: [
       {
         path: "",

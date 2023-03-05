@@ -4,7 +4,6 @@ import MenuItem from "./MenuItem";
 import { filterMenuItems } from "../../utils/filterMenuItems";
 
 const MenuMainCategory = ({ item, totalItems }) => {
-  console.log("MenuMainCategory Component");
   const [menuWidgets, setMenuWidgents] = useState(null);
   const [menuItems, setMenuItems] = useState(null);
   const [isChildVisible, setIsChildVisible] = useState(false);
@@ -18,12 +17,11 @@ const MenuMainCategory = ({ item, totalItems }) => {
     if (item.entities) {
       const menuEntities = item.entities;
       const finalItems = filterMenuItems(totalItems, menuEntities);
-      console.log("finalItems", finalItems);
+
       setMenuItems(finalItems);
     }
   };
 
-  console.log("IN MAIN MENU CATEGORI", menuWidgets);
   return (
     <div className="py-1 rounded m-0.5 cursor-pointer font-[Poppins] bg-slate-900 text-white">
       <div>
@@ -48,7 +46,6 @@ const MenuMainCategory = ({ item, totalItems }) => {
         : null}
       {menuItems && isChildVisible
         ? menuItems.map((innerItem, index) => {
-            console.log("INNER ITEM !!!", innerItem);
             return <MenuItem key={innerItem.id} item={innerItem} />;
           })
         : null}

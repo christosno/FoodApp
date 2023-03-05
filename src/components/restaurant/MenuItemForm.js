@@ -8,10 +8,8 @@ const MenuItemForm = ({ onAddToCartHandler }) => {
     e.preventDefault();
     setErrorNum(false);
     const currentNumItems = +numItmes.current.value;
-    console.log(currentNumItems);
 
     if (!numItmes.current.value.trim() || currentNumItems < 1) {
-      console.log("errororr");
       setErrorNum(true);
       return;
     }

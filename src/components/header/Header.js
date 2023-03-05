@@ -1,18 +1,20 @@
-import { Link, Form, useRouteLoaderData } from "react-router-dom";
+import { Link, Form } from "react-router-dom";
 import Button from "../UI/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import { CartContexrt } from "../../store/cart";
 import HeaderCardButton from "./HeaderCardButton";
+import { UserLoginContext } from "../../store/user-auth";
 
 const Header = ({ onOpenModal }) => {
+  console.log("HEADER");
   const [navIsOpen, setNavIsOpen] = useState(false);
   const { items, totalAmount } = useContext(CartContexrt);
+  const { user } = useContext(UserLoginContext);
 
-  const user = useRouteLoaderData("root");
+  console.log(user);
   const userName = user ? user.displayName : null;
-  console.log(userName);
 
   const numItems = items.reduce((curVal, item) => {
     return curVal + item.amount;

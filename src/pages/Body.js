@@ -11,14 +11,11 @@ const Body = () => {
   const searchCtx = useContext(SearchContext);
 
   const applyData = (restaurantData) => {
-    console.log("IN APPLY DATA______________________________");
     const restaurantList = restaurantData?.data?.cards[2]?.data?.data?.cards;
     searchCtx.setTotalRestaurants(restaurantList);
     searchCtx.filterRestaurants(restaurantList, false);
     searchCtx.setTotalCuisinesSearchOptions(restaurantList);
   };
-
-  console.log("SEARCH CONTEXT", searchCtx);
 
   const {
     isLoading,
@@ -28,7 +25,6 @@ const Body = () => {
 
   useEffect(() => {
     if (searchCtx.totalRestaurants && searchCtx.totalRestaurants.length > 0) {
-      console.log("USEEFFECT / USE THE EXISTING DATA");
       searchCtx.filterRestaurants(searchCtx.totalRestaurants, false);
       searchCtx.setInputValue("");
       return;

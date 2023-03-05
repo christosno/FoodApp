@@ -8,7 +8,6 @@ const Button = ({
   children,
   type = null,
 }) => {
-  console.log("Button Component");
   return (
     <button
       type={type}
